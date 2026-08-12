@@ -1,0 +1,88 @@
+/* Hallmark · macrostructure: Workbench (docs shell) · tone: technical-atmospheric · anchor hue: amber 80° on deep indigo paper
+ * theme: custom (vibe: "深夜工作室裡的向日葵" · paper oklch(14.5% 0.02 265) · accent oklch(80% 0.14 80) warm ·
+ * Space Grotesk display + Noto Sans TC body + JetBrains Mono)
+ * Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4
+ */
+@import "tailwindcss";
+
+:root {
+  --color-paper: oklch(14.5% 0.02 265);
+  --color-paper-2: oklch(17.5% 0.022 265);
+  --color-paper-3: oklch(21% 0.026 265);
+  --color-ink: oklch(93% 0.008 80);
+  --color-ink-mute: oklch(71% 0.014 265);
+  --color-ink-faint: oklch(54% 0.016 265);
+  --color-line: oklch(27% 0.022 265);
+  --color-line-strong: oklch(34% 0.024 265);
+  --color-accent: oklch(80% 0.14 80);
+  --color-accent-strong: oklch(71% 0.155 68);
+  --color-accent-soft: oklch(80% 0.14 80 / 12%);
+  --color-focus: oklch(80% 0.14 80);
+  --color-danger: oklch(68% 0.19 25);
+  --color-success: oklch(75% 0.15 155);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 240ms;
+  --dur-slow: 420ms;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-2: var(--color-paper-2);
+  --color-paper-3: var(--color-paper-3);
+  --color-ink: var(--color-ink);
+  --color-ink-mute: var(--color-ink-mute);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-focus: var(--color-focus);
+  --color-danger: var(--color-danger);
+  --color-success: var(--color-success);
+  --font-display: var(--font-space-grotesk), var(--font-noto-tc), sans-serif;
+  --font-sans: var(--font-noto-tc), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* 細捲軸，符合深色工作台質感 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 120ms !important;
+    scroll-behavior: auto !important;
+  }
+}
