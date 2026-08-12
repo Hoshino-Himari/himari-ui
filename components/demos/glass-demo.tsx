@@ -1,10 +1,13 @@
 "use client";
 
 import { Glass } from "@/components/ui/glass";
+import { CanvasApiNote } from "./canvas-api-note";
 
 export default function GlassDemo() {
   return (
-    <div className="relative h-72 w-full overflow-hidden rounded-xl">
+    <>
+      <CanvasApiNote fallback="partial" />
+      <div className="relative h-72 w-full overflow-hidden rounded-xl">
       <Glass className="h-full w-full" size={90} zoom={1.6}>
         <div className="flex h-full flex-col items-center justify-center gap-3 bg-zinc-100 px-6 text-center">
           <h3 data-glass-target className="text-2xl font-semibold text-zinc-900">
@@ -16,6 +19,7 @@ export default function GlassDemo() {
           <p className="text-xs text-zinc-500">移動游標，停在標題上會放大</p>
         </div>
       </Glass>
-    </div>
+      </div>
+    </>
   );
 }

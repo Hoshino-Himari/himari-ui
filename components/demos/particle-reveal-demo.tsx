@@ -1,10 +1,13 @@
 "use client";
 
 import { ParticleReveal } from "@/components/ui/particle-reveal";
+import { CanvasApiNote } from "./canvas-api-note";
 
 export default function ParticleRevealDemo() {
   return (
-    <div className="relative h-72 overflow-hidden rounded-xl">
+    <>
+      <CanvasApiNote fallback="none" />
+      <div className="relative h-72 overflow-hidden rounded-xl">
       <ParticleReveal className="h-full w-full" radius={240} background="#09090b">
         <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-zinc-950 px-8 text-center">
           <h3 className="text-2xl font-semibold tracking-wide text-zinc-100">
@@ -15,6 +18,7 @@ export default function ParticleRevealDemo() {
           </p>
         </div>
       </ParticleReveal>
-    </div>
+      </div>
+    </>
   );
 }

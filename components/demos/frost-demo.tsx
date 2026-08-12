@@ -1,10 +1,13 @@
 "use client";
 
 import { Frost } from "@/components/ui/frost";
+import { CanvasApiNote } from "./canvas-api-note";
 
 export default function FrostDemo() {
   return (
-    <div className="relative h-72 overflow-hidden rounded-xl">
+    <>
+      <CanvasApiNote fallback="partial" />
+      <div className="relative h-72 overflow-hidden rounded-xl">
       <Frost className="h-full w-full">
         <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-sky-950 px-8 text-center">
           <h3 className="text-2xl font-semibold tracking-wide text-sky-100">
@@ -16,6 +19,7 @@ export default function FrostDemo() {
           </p>
         </div>
       </Frost>
-    </div>
+      </div>
+    </>
   );
 }

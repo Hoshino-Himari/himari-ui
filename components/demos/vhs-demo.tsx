@@ -1,10 +1,13 @@
 "use client";
 
 import { VHS } from "@/components/ui/vhs";
+import { CanvasApiNote } from "./canvas-api-note";
 
 export default function VhsDemo() {
   return (
-    <div className="relative h-72 w-full overflow-hidden rounded-xl">
+    <>
+      <CanvasApiNote fallback="none" />
+      <div className="relative h-72 w-full overflow-hidden rounded-xl">
       <VHS className="h-full w-full" grain={0.15} scanlines={0.2}>
         <div className="flex h-full flex-col items-center justify-center gap-3 bg-zinc-900 px-6 text-center">
           <h3 className="text-2xl font-semibold tracking-widest text-amber-200">
@@ -16,6 +19,7 @@ export default function VhsDemo() {
           <p className="text-xs tracking-widest text-zinc-500">▶ PLAY&nbsp;&nbsp;SP 0:12:34</p>
         </div>
       </VHS>
-    </div>
+      </div>
+    </>
   );
 }

@@ -1,10 +1,13 @@
 "use client";
 
 import { Glitch } from "@/components/ui/glitch";
+import { CanvasApiNote } from "./canvas-api-note";
 
 export default function GlitchDemo() {
   return (
-    <div className="relative h-72 w-full overflow-hidden rounded-xl">
+    <>
+      <CanvasApiNote fallback="none" />
+      <div className="relative h-72 w-full overflow-hidden rounded-xl">
       <Glitch className="h-full w-full" interval={2.5} duration={0.35}>
         <div className="flex h-full flex-col items-center justify-center gap-3 bg-zinc-950 px-6 text-center">
           <h3 className="font-mono text-2xl font-semibold tracking-wider text-emerald-400">
@@ -16,6 +19,7 @@ export default function GlitchDemo() {
           <p className="font-mono text-xs text-zinc-600">SYSTEM // 等待下一次爆發</p>
         </div>
       </Glitch>
-    </div>
+      </div>
+    </>
   );
 }
