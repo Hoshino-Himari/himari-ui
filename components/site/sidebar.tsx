@@ -14,6 +14,16 @@ export function Sidebar({ categories, entries }: Props) {
   const pathname = usePathname();
   const [query, setQuery] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
+
+  function toggleCategory(id: string) {
+    setCollapsed((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -41,14 +51,31 @@ export function Sidebar({ categories, entries }: Props) {
       {categories.map((cat) => {
         const items = filtered.filter((e) => e.category === cat.id);
         if (items.length === 0) return null;
+        // 搜尋時一律展開，避免結果被收合狀態藏住
+        const isOpen = query.trim() !== "" || !collapsed.has(cat.id);
         return (
           <div key={cat.id}>
-            <p className="mb-2 px-2 font-display text-xs font-bold uppercase tracking-widest text-ink-faint">
+            <button
+              type="button"
+              onClick={() => toggleCategory(cat.id)}
+              aria-expanded={isOpen}
+              className="mb-1 flex w-full items-center gap-1.5 rounded-md px-2 py-1 font-display text-xs font-bold uppercase tracking-widest text-ink-faint transition-colors duration-(--dur-fast) hover:bg-paper-3 hover:text-ink-mute"
+            >
+              <svg
+                viewBox="0 0 12 12"
+                aria-hidden
+                className={`size-2.5 shrink-0 fill-none stroke-current stroke-[1.75] transition-transform duration-(--dur-fast) ease-(--ease-out) ${
+                  isOpen ? "rotate-90" : ""
+                }`}
+              >
+                <path d="M4 2.5 8 6l-4 3.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
               {cat.name}
-              <span className="ml-1.5 font-mono text-[10px] text-ink-faint/70">
+              <span className="ml-auto font-mono text-[10px] text-ink-faint/70">
                 {items.length}
               </span>
-            </p>
+            </button>
+            {isOpen && (
             <ul className="flex flex-col gap-0.5">
               {items.map((item) => {
                 const href = `/components/${item.slug}`;
@@ -71,6 +98,7 @@ export function Sidebar({ categories, entries }: Props) {
                 );
               })}
             </ul>
+            )}
           </div>
         );
       })}
