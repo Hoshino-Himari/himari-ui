@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const GITHUB_URL = "https://github.com/hoshino-himari/himari-ui";
+const GITHUB_URL = "https://github.com/Hoshino-Himari/himari-ui";
 
 export function SiteHeader() {
   return (
