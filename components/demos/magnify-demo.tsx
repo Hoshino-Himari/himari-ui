@@ -7,7 +7,7 @@ export default function MagnifyDemo() {
   return (
     <>
       <CanvasApiNote fallback="partial" />
-      <div className="relative h-72 overflow-hidden rounded-xl">
+      <div className="relative h-72 w-full overflow-hidden rounded-xl">
       <Magnify className="h-full w-full" size={110} zoom={2}>
         <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-zinc-950 px-8 text-center">
           <h3 className="text-2xl font-semibold tracking-wide text-zinc-100">

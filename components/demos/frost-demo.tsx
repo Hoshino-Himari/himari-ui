@@ -7,7 +7,7 @@ export default function FrostDemo() {
   return (
     <>
       <CanvasApiNote fallback="partial" />
-      <div className="relative h-72 overflow-hidden rounded-xl">
+      <div className="relative h-72 w-full overflow-hidden rounded-xl">
       <Frost className="h-full w-full">
         <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-sky-950 px-8 text-center">
           <h3 className="text-2xl font-semibold tracking-wide text-sky-100">
