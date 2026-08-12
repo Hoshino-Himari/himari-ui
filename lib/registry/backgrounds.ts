@@ -211,4 +211,203 @@ export const backgrounds: ComponentEntry[] = [
       },
     ],
   },
+  {
+    slug: "retro-grid",
+    name: "復古網格",
+    nameEn: "Retro Grid",
+    category: "backgrounds",
+    description:
+      "80 年代風格的透視網格地平線持續向前捲動，WebGL 繪製、不支援時自動退回 CSS 3D 版本。適合復古或合成波風格的 hero 區塊。",
+    dependencies: [],
+    props: [
+      {
+        name: "angle",
+        type: "number",
+        defaultValue: "65",
+        description: "網格平面的傾斜角度（度）",
+      },
+      {
+        name: "cellSize",
+        type: "number",
+        defaultValue: "60",
+        description: "網格格子大小（px）",
+      },
+      {
+        name: "opacity",
+        type: "number",
+        defaultValue: "0.5",
+        description: "整體不透明度 0–1",
+      },
+      {
+        name: "lightLineColor",
+        type: "string",
+        defaultValue: '"gray"',
+        description: "淺色模式的網格線顏色",
+      },
+      {
+        name: "darkLineColor",
+        type: "string",
+        defaultValue: '"gray"',
+        description: "深色模式的網格線顏色",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/retro-grid",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "flickering-grid",
+    name: "閃爍網格",
+    nameEn: "Flickering Grid",
+    category: "backgrounds",
+    description:
+      "canvas 繪製的方格陣列，每格以隨機機率變換透明度形成閃爍效果；已處理 devicePixelRatio、容器縮放與離開視窗自動暫停。",
+    dependencies: [],
+    props: [
+      {
+        name: "squareSize",
+        type: "number",
+        defaultValue: "4",
+        description: "每個方格的邊長（px）",
+      },
+      {
+        name: "gridGap",
+        type: "number",
+        defaultValue: "6",
+        description: "方格間距（px）",
+      },
+      {
+        name: "flickerChance",
+        type: "number",
+        defaultValue: "0.3",
+        description: "每秒每格閃爍的機率",
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: '"rgb(0, 0, 0)"',
+        description: "方格顏色",
+      },
+      {
+        name: "maxOpacity",
+        type: "number",
+        defaultValue: "0.3",
+        description: "方格最大不透明度 0–1",
+      },
+      {
+        name: "width",
+        type: "number",
+        description: "固定寬度（px），未指定時跟隨容器",
+      },
+      {
+        name: "height",
+        type: "number",
+        description: "固定高度（px），未指定時跟隨容器",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/flickering-grid",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "warp-background",
+    name: "空間扭曲邊框",
+    nameEn: "Warp Background",
+    category: "backgrounds",
+    description:
+      "內容四周以 3D 透視網格包圍，隨機色相的光束沿著網格面飛向遠方，營造穿越空間的科幻感。適合強調單一卡片或 CTA 的容器。",
+    dependencies: ["motion"],
+    props: [
+      {
+        name: "perspective",
+        type: "number",
+        defaultValue: "100",
+        description: "3D 透視距離（px），越小扭曲越強",
+      },
+      {
+        name: "beamsPerSide",
+        type: "number",
+        defaultValue: "3",
+        description: "每一面同時飛行的光束數量",
+      },
+      {
+        name: "beamSize",
+        type: "number",
+        defaultValue: "5",
+        description: "光束寬度（佔該面寬度的百分比）",
+      },
+      {
+        name: "beamDelayMin",
+        type: "number",
+        defaultValue: "0",
+        description: "光束隨機延遲下限（秒）",
+      },
+      {
+        name: "beamDelayMax",
+        type: "number",
+        defaultValue: "3",
+        description: "光束隨機延遲上限（秒）",
+      },
+      {
+        name: "beamDuration",
+        type: "number",
+        defaultValue: "3",
+        description: "光束飛完一趟的秒數",
+      },
+      {
+        name: "gridColor",
+        type: "string",
+        defaultValue: '"rgba(163, 163, 163, 0.35)"',
+        description: "透視網格線顏色",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/warp-background",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "interactive-grid-pattern",
+    name: "互動網格",
+    nameEn: "Interactive Grid Pattern",
+    category: "backgrounds",
+    description:
+      "SVG 方格鋪滿容器，滑鼠掠過的格子會亮起並緩慢淡出。適合互動感較強的 hero 或功能區塊背景，可配合 mask 做邊緣淡出。",
+    dependencies: [],
+    props: [
+      {
+        name: "width",
+        type: "number",
+        defaultValue: "40",
+        description: "每格寬度（px）",
+      },
+      {
+        name: "height",
+        type: "number",
+        defaultValue: "40",
+        description: "每格高度（px）",
+      },
+      {
+        name: "squares",
+        type: "[number, number]",
+        defaultValue: "[24, 24]",
+        description: "格子數量 [水平, 垂直]",
+      },
+      {
+        name: "squaresClassName",
+        type: "string",
+        description: "疊加在每個格子上的 class，可改 hover 顏色",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/interactive-grid-pattern",
+      license: "MIT",
+    },
+  },
 ];

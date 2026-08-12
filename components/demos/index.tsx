@@ -67,6 +67,42 @@ export const demos: Record<string, ComponentType> = {
   "mouse-spotlight": load(() => import("./mouse-spotlight-demo")),
   confetti: load(() => import("./confetti-demo")),
   "animated-grid-pattern": load(() => import("./animated-grid-pattern-demo")),
+  // 文字特效（MagicUI 移植）
+  "word-rotate": load(() => import("./word-rotate-demo")),
+  "sparkles-text": load(() => import("./sparkles-text-demo")),
+  "hyper-text": load(() => import("./hyper-text-demo")),
+  "morphing-text": load(() => import("./morphing-text-demo")),
+  "text-reveal": load(() => import("./text-reveal-demo")),
+  "spinning-text": load(() => import("./spinning-text-demo")),
+  // 互動特效（MagicUI 移植）
+  "animated-beam": load(() => import("./animated-beam-demo")),
+  "orbiting-circles": load(() => import("./orbiting-circles-demo")),
+  ripple: load(() => import("./ripple-demo")),
+  "shine-border": load(() => import("./shine-border-demo")),
+  lens: load(() => import("./lens-demo")),
+  "scroll-progress": load(() => import("./scroll-progress-demo")),
+  // 背景特效（MagicUI 移植）
+  "retro-grid": load(() => import("./retro-grid-demo")),
+  "flickering-grid": load(() => import("./flickering-grid-demo")),
+  "warp-background": load(() => import("./warp-background-demo")),
+  "interactive-grid-pattern": load(() => import("./interactive-grid-pattern-demo")),
+  // 卡片（MagicUI 移植）
+  "magic-card": load(() => import("./magic-card-demo")),
+  "neon-gradient-card": load(() => import("./neon-gradient-card-demo")),
+  // 展示區塊（MagicUI 移植）
+  "animated-list": load(() => import("./animated-list-demo")),
+  "avatar-circles": load(() => import("./avatar-circles-demo")),
+  "bento-grid": load(() => import("./bento-grid-demo")),
+  terminal: load(() => import("./terminal-demo")),
+  // WebGL 畫布（CanvasUI 移植）
+  liquid: load(() => import("./liquid-demo")),
+  glass: load(() => import("./glass-demo")),
+  glitch: load(() => import("./glitch-demo")),
+  vhs: load(() => import("./vhs-demo")),
+  magnify: load(() => import("./magnify-demo")),
+  "decrypt-reveal": load(() => import("./decrypt-reveal-demo")),
+  "particle-reveal": load(() => import("./particle-reveal-demo")),
+  frost: load(() => import("./frost-demo")),
 };
 
 export function DemoHost({ slug }: { slug: string }) {

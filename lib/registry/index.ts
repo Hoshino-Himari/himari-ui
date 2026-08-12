@@ -7,6 +7,8 @@ import { loaders } from "./loaders";
 import { inputs } from "./inputs";
 import { navigation } from "./navigation";
 import { effects } from "./effects";
+import { display } from "./display";
+import { canvas } from "./canvas";
 
 export type { Category, ComponentEntry, CategoryId, PropDoc, SourceRef } from "./types";
 
@@ -19,6 +21,8 @@ export const categories: Category[] = [
   { id: "inputs", name: "輸入與表單", nameEn: "Inputs & Forms", description: "浮動標籤、發光聚焦、OTP、開關、滑桿。" },
   { id: "navigation", name: "導覽", nameEn: "Navigation", description: "macOS Dock、浮動導覽列、動畫分頁籤與麵包屑。" },
   { id: "effects", name: "互動特效", nameEn: "Effects", description: "3D 地球、跑馬燈、光束邊框、彩帶等點睛特效。" },
+  { id: "display", name: "展示區塊", nameEn: "Display", description: "動畫清單、便當格局、終端機、頭像圈等內容展示元件。" },
+  { id: "canvas", name: "WebGL 畫布", nameEn: "Canvas / WebGL", description: "液體模擬、玻璃折射、故障藝術等跑在真實 HTML 上的 WebGL 特效。" },
 ];
 
 export const registry: ComponentEntry[] = [
@@ -30,6 +34,8 @@ export const registry: ComponentEntry[] = [
   ...inputs,
   ...navigation,
   ...effects,
+  ...display,
+  ...canvas,
 ];
 
 export function getEntry(slug: string): ComponentEntry | undefined {

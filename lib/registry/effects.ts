@@ -219,4 +219,286 @@ export const effects: ComponentEntry[] = [
       url: "https://magicui.design/docs/components/animated-grid-pattern",
     },
   },
+  {
+    slug: "animated-beam",
+    name: "連線光束",
+    nameEn: "Animated Beam",
+    category: "effects",
+    description:
+      "在容器內的兩個節點之間畫出 SVG 曲線，一段漸層亮光沿線流動，並隨容器縮放自動重算路徑。適合整合示意圖、資料流程圖。",
+    dependencies: ["motion"],
+    props: [
+      {
+        name: "containerRef",
+        type: "RefObject<HTMLElement | null>",
+        description: "外層 relative 容器的 ref，光束以它為座標系",
+      },
+      {
+        name: "fromRef",
+        type: "RefObject<HTMLElement | null>",
+        description: "起點節點的 ref",
+      },
+      {
+        name: "toRef",
+        type: "RefObject<HTMLElement | null>",
+        description: "終點節點的 ref",
+      },
+      {
+        name: "curvature",
+        type: "number",
+        defaultValue: "0",
+        description: "曲線弧度，正值向上彎、負值向下彎",
+      },
+      {
+        name: "reverse",
+        type: "boolean",
+        defaultValue: "false",
+        description: "亮光反向流動",
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "5",
+        description: "亮光流過一次的秒數",
+      },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "動畫起始延遲（秒）",
+      },
+      {
+        name: "gradientStartColor",
+        type: "string",
+        defaultValue: '"#ffaa40"',
+        description: "亮光漸層起始色",
+      },
+      {
+        name: "gradientStopColor",
+        type: "string",
+        defaultValue: '"#9c40ff"',
+        description: "亮光漸層結束色",
+      },
+      {
+        name: "pathColor",
+        type: "string",
+        defaultValue: '"gray"',
+        description: "底線顏色",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/animated-beam",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "orbiting-circles",
+    name: "環繞軌道",
+    nameEn: "Orbiting Circles",
+    category: "effects",
+    description:
+      "把子元素平均分佈在圓形軌道上繞中心公轉，可調半徑、速度、方向與軌道線。適合技術棧、整合服務的視覺展示。",
+    dependencies: [],
+    props: [
+      {
+        name: "radius",
+        type: "number",
+        defaultValue: "160",
+        description: "軌道半徑（px）",
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "20",
+        description: "公轉一圈的秒數",
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "速度倍率，實際週期為 duration / speed",
+      },
+      {
+        name: "reverse",
+        type: "boolean",
+        defaultValue: "false",
+        description: "逆向公轉",
+      },
+      {
+        name: "path",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否顯示軌道線",
+      },
+      {
+        name: "iconSize",
+        type: "number",
+        defaultValue: "30",
+        description: "每個子元素的尺寸（px）",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/orbiting-circles",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "ripple",
+    name: "漣漪",
+    nameEn: "Ripple",
+    category: "effects",
+    description:
+      "多層同心圓從中心緩慢脹縮擴散的背景效果，底部漸淡不搶主體。適合鋪在 Hero、CTA 區塊後面當低調動態背景。",
+    dependencies: [],
+    props: [
+      {
+        name: "mainCircleSize",
+        type: "number",
+        defaultValue: "210",
+        description: "最內圈直徑（px），往外每圈 +70",
+      },
+      {
+        name: "mainCircleOpacity",
+        type: "number",
+        defaultValue: "0.24",
+        description: "最內圈不透明度，往外遞減",
+      },
+      {
+        name: "numCircles",
+        type: "number",
+        defaultValue: "8",
+        description: "同心圓數量",
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: '"#71717a"',
+        description: "漣漪顏色（邊框與填色基準）",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/ripple",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "shine-border",
+    name: "流光邊框",
+    nameEn: "Shine Border",
+    category: "effects",
+    description:
+      "一圈漸層光在容器邊框上緩緩流動，以 mask 挖空只留邊框、圓角自動繼承。適合突顯重點卡片或輸入框外框。",
+    dependencies: [],
+    props: [
+      {
+        name: "borderWidth",
+        type: "number",
+        defaultValue: "1",
+        description: "邊框線寬（px）",
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "14",
+        description: "流動一輪的秒數",
+      },
+      {
+        name: "shineColor",
+        type: "string | string[]",
+        defaultValue: '"#000000"',
+        description: "流光顏色，可傳陣列做多色漸層",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/shine-border",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "lens",
+    name: "放大鏡",
+    nameEn: "Lens",
+    category: "effects",
+    description:
+      "滑鼠移入時出現跟著游標移動的圓形放大鏡片，也可固定鏡片位置。適合商品圖、截圖等需要看細節的內容。",
+    dependencies: ["motion"],
+    props: [
+      {
+        name: "zoomFactor",
+        type: "number",
+        defaultValue: "1.3",
+        description: "放大倍率，必須大於 1",
+      },
+      {
+        name: "lensSize",
+        type: "number",
+        defaultValue: "170",
+        description: "鏡片直徑（px）",
+      },
+      {
+        name: "isStatic",
+        type: "boolean",
+        defaultValue: "false",
+        description: "固定鏡片於 position 指定位置，不跟隨游標",
+      },
+      {
+        name: "position",
+        type: "{ x: number; y: number }",
+        defaultValue: "{ x: 0, y: 0 }",
+        description: "isStatic 時鏡片的固定座標",
+      },
+      {
+        name: "defaultPosition",
+        type: "{ x: number; y: number }",
+        description: "未 hover 時鏡片的預設停留位置",
+      },
+      {
+        name: "lensColor",
+        type: "string",
+        defaultValue: '"black"',
+        description: "鏡片遮罩顏色",
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "0.1",
+        description: "鏡片出現/消失的動畫秒數",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/lens",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "scroll-progress",
+    name: "捲動進度條",
+    nameEn: "Scroll Progress",
+    category: "effects",
+    description:
+      "固定在頂端的漸層細線，以 scaleX 隨捲動進度增長，預設追蹤整頁、也可指定捲動容器。適合長文閱讀頁與文件頁。",
+    dependencies: ["motion"],
+    props: [
+      {
+        name: "containerRef",
+        type: "RefObject<HTMLElement | null>",
+        description: "要追蹤的捲動容器；不傳則追蹤整頁捲動",
+      },
+      {
+        name: "className",
+        type: "string",
+        description: "覆寫高度、位置、漸層色等樣式",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/scroll-progress",
+      license: "MIT",
+    },
+  },
 ];

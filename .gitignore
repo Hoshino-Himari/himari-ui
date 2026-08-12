@@ -43,3 +43,6 @@ next-env.d.ts
 # generated
 lib/registry-code.json
 .hallmark/
+
+.vercel
+.env*

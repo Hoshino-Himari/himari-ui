@@ -140,4 +140,100 @@ export const cards: ComponentEntry[] = [
       },
     ],
   },
+  {
+    slug: "magic-card",
+    name: "魔法卡片",
+    nameEn: "Magic Card",
+    category: "cards",
+    description:
+      "游標靠近時邊框浮現漸層、卡片內跟著游標出現柔和光暈；另有 orb 模式改為一顆彈簧跟隨的模糊光球。深淺色模式自動偵測。",
+    dependencies: ["motion"],
+    props: [
+      {
+        name: "mode",
+        type: '"gradient" | "orb"',
+        defaultValue: '"gradient"',
+        description: "光效模式：跟隨光暈或彈簧光球",
+      },
+      {
+        name: "gradientSize",
+        type: "number",
+        defaultValue: "200",
+        description: "跟隨光暈的半徑（px）",
+      },
+      {
+        name: "gradientColor",
+        type: "string",
+        defaultValue: '"#262626"',
+        description: "跟隨光暈的顏色",
+      },
+      {
+        name: "gradientOpacity",
+        type: "number",
+        defaultValue: "0.8",
+        description: "跟隨光暈的不透明度 0–1",
+      },
+      {
+        name: "gradientFrom",
+        type: "string",
+        defaultValue: '"#9E7AFF"',
+        description: "邊框漸層起始色",
+      },
+      {
+        name: "gradientTo",
+        type: "string",
+        defaultValue: '"#FE8BBB"',
+        description: "邊框漸層結束色",
+      },
+      {
+        name: "backgroundColor",
+        type: "string",
+        description: "卡片內層背景色；未指定時依深淺色模式自動選擇",
+      },
+      {
+        name: "borderColor",
+        type: "string",
+        description: "靜止時的邊框色；未指定時依深淺色模式自動選擇",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/magic-card",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "neon-gradient-card",
+    name: "霓虹漸層卡片",
+    nameEn: "Neon Gradient Card",
+    category: "cards",
+    description:
+      "卡片外圈一層流動的雙色漸層邊框，外加同色系大範圍模糊光暈，像霓虹燈管一樣發光。適合深色頁面的重點卡片。",
+    dependencies: [],
+    props: [
+      {
+        name: "borderSize",
+        type: "number",
+        defaultValue: "2",
+        description: "邊框寬度（px）",
+      },
+      {
+        name: "borderRadius",
+        type: "number",
+        defaultValue: "20",
+        description: "圓角半徑（px）",
+      },
+      {
+        name: "neonColors",
+        type: "{ firstColor: string; secondColor: string }",
+        defaultValue: '{ firstColor: "#ff00aa", secondColor: "#00FFF1" }',
+        description: "霓虹漸層的兩端顏色",
+      },
+    ],
+    source: {
+      label: "MagicUI",
+      url: "https://magicui.design/docs/components/neon-gradient-card",
+      license: "MIT",
+    },
+  },
 ];

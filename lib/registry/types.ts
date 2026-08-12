@@ -6,7 +6,9 @@ export type CategoryId =
   | "loaders"
   | "inputs"
   | "navigation"
-  | "effects";
+  | "effects"
+  | "display"
+  | "canvas";
 
 export type Category = {
   id: CategoryId;
@@ -28,6 +30,8 @@ export type SourceRef = {
   /** 開源出處或靈感來源名稱，例如 "MagicUI" */
   label: string;
   url: string;
+  /** 原專案授權（如 "MIT"）。有填代表程式碼為照搬移植；沒填代表僅為靈感改寫 */
+  license?: string;
 };
 
 export type ComponentEntry = {

@@ -50,16 +50,33 @@ export default async function ComponentPage({
       </p>
       {entry.source && (
         <p className="mt-2 text-xs text-ink-faint">
-          改寫自開源專案{" "}
-          <a
-            href={entry.source.url}
-            target="_blank"
-            rel="noreferrer"
-            className="text-accent underline underline-offset-2 hover:text-accent-strong"
-          >
-            {entry.source.label}
-          </a>
-          ，已依本站風格調整。
+          {entry.source.license ? (
+            <>
+              移植自開源專案{" "}
+              <a
+                href={entry.source.url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-accent underline underline-offset-2 hover:text-accent-strong"
+              >
+                {entry.source.label}
+              </a>
+              （{entry.source.license} 授權），保留原作者授權聲明。
+            </>
+          ) : (
+            <>
+              改寫自{" "}
+              <a
+                href={entry.source.url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-accent underline underline-offset-2 hover:text-accent-strong"
+              >
+                {entry.source.label}
+              </a>
+              的設計靈感，程式碼為本站重新實作。
+            </>
+          )}
         </p>
       )}
 
