@@ -38,8 +38,8 @@ export function CanvasApiNote({
       {fallback === "none"
         ? "⚠ 你的瀏覽器尚未支援 HTML-in-canvas 實驗 API，此效果目前只會顯示原始內容。"
         : "⚠ 你的瀏覽器尚未支援 HTML-in-canvas 實驗 API，目前顯示的是降級版效果。"}
-      可在 Chrome 網址列輸入 chrome://flags 開啟「Experimental Web Platform
-      features」後重啟瀏覽器試試完整效果。
+      想先睹為快：在 Chrome 149+ 網址列輸入 chrome://flags/#canvas-draw-element
+      開啟旗標並重啟瀏覽器。
     </p>
   );
 }
