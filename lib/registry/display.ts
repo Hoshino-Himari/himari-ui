@@ -44,8 +44,9 @@ export const display: ComponentEntry[] = [
     props: [
       {
         name: "avatarUrls",
-        type: "{ imageUrl: string; profileUrl: string }[]",
-        description: "頭像清單：圖片網址與點擊後開啟的個人頁連結",
+        type: "{ imageUrl: string; profileUrl?: string }[]",
+        description:
+          "頭像清單：圖片網址，以及選填的個人頁連結（有給才會變成連結並以新分頁開啟）",
       },
       {
         name: "numPeople",

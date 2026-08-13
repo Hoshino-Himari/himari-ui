@@ -1,10 +1,14 @@
 "use client"
 
 // 移植自 MagicUI <https://magicui.design/docs/components/text-reveal> — MIT License © magicuidesign
-// 保留原始實作，僅做自足化最小調整；另加選用的 containerRef，讓元件放進自訂捲動容器時也能追蹤進度。
+// 保留原始實作，僅做自足化最小調整；另加選用的 containerRef，讓元件放進自訂捲動容器時也能追蹤進度
+// ——原作的 h-[200vh] / h-[50%] 是視窗高度單位，放進比視窗矮的捲動容器時 sticky 區塊會比容器還高、
+// 文字直接被捲走，所以有 containerRef 時改用容器高度換算（區塊高 3×、sticky 區塊 1×）。
 
 import {
+  useEffect,
   useRef,
+  useState,
   type ComponentPropsWithoutRef,
   type FC,
   type ReactNode,
@@ -31,9 +35,26 @@ export const TextReveal: FC<TextRevealProps> = ({
   containerRef,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null)
+
+  // 自訂容器模式：量出容器高度，用它換算區塊與 sticky 區塊的高度。
+  const [containerHeight, setContainerHeight] = useState(0)
+  useEffect(() => {
+    const el = containerRef?.current
+    if (!el) return
+    const measure = () => setContainerHeight(el.clientHeight)
+    measure()
+    if (typeof ResizeObserver === "undefined") return
+    const ro = new ResizeObserver(measure)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [containerRef])
+  const scoped = containerHeight > 0
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     container: containerRef,
+    // 容器模式下，進度剛好對應 sticky 釘住的那段行程。
+    ...(scoped ? { offset: ["start start", "end end"] as const } : {}),
   })
 
   if (typeof children !== "string") {
@@ -43,11 +64,18 @@ export const TextReveal: FC<TextRevealProps> = ({
   const words = children.split(" ")
 
   return (
-    <div ref={sectionRef} className={cn("relative z-0 h-[200vh]", className)}>
+    <div
+      ref={sectionRef}
+      className={cn("relative z-0", !scoped && "h-[200vh]", className)}
+      style={scoped ? { height: containerHeight * 3 } : undefined}
+    >
       <div
-        className={
-          "sticky top-0 mx-auto flex h-[50%] max-w-4xl items-center bg-transparent px-4 py-20"
-        }
+        className={cn(
+          "sticky top-0 mx-auto flex max-w-4xl items-center bg-transparent px-4",
+          // 容器模式的可視高度小得多，維持 py-20 會把文字擠到看不見。
+          scoped ? "py-6" : "h-[50%] py-20"
+        )}
+        style={scoped ? { height: containerHeight } : undefined}
       >
         <span
           className={
