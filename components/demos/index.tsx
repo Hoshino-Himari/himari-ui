@@ -149,6 +149,15 @@ export const demos: Record<string, ComponentType> = {
   "swipe-deck": load(() => import("./swipe-deck-demo")),
   "image-accordion": load(() => import("./image-accordion-demo")),
   "gooey-stack": load(() => import("./gooey-stack-demo")),
+  // 展示與背景（GodUI 移植・二批）
+  "animated-testimonials": load(() => import("./animated-testimonials-demo")),
+  "avatar-group": load(() => import("./avatar-group-demo")),
+  accordion: load(() => import("./accordion-demo")),
+  "reorder-list": load(() => import("./reorder-list-demo")),
+  "blueprint-grid": load(() => import("./blueprint-grid-demo")),
+  "pixel-grid": load(() => import("./pixel-grid-demo")),
+  "topographic-drift": load(() => import("./topographic-drift-demo")),
+  "flow-field": load(() => import("./flow-field-demo")),
 };
 
 export function DemoHost({ slug }: { slug: string }) {

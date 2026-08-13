@@ -267,4 +267,157 @@ export const display: ComponentEntry[] = [
       license: "MIT",
     },
   },
+  {
+    slug: "animated-testimonials",
+    name: "動畫見證輪播",
+    nameEn: "Animated Testimonials",
+    category: "display",
+    description:
+      "左側人像以微傾斜的牌堆輪流翻到最前面，右側引言逐字模糊淡入，可自動輪播也能手動前後切換。適合客戶推薦或案例輪播。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "testimonials",
+        type: "{ quote: string; name: string; role: string; src: string }[]",
+        description: "要輪播的引言、姓名、頭銜與人像圖",
+      },
+      {
+        name: "autoplay",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否自動輪播",
+      },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "5000",
+        description: "自動輪播間隔（毫秒）",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/layout/animated-testimonials",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "avatar-group",
+    name: "頭像群組",
+    nameEn: "Avatar Group",
+    category: "display",
+    description:
+      "一排互相重疊的頭像，滑鼠移入時整排散開、單顆再往上浮起，超過上限的收成 +N；沒有圖片時自動退回文字縮寫。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "avatars",
+        type: "{ src?: string; alt?: string; fallback?: string; href?: string }[]",
+        description: "頭像清單",
+      },
+      {
+        name: "max",
+        type: "number",
+        defaultValue: "4",
+        description: "收成 +N 之前最多顯示幾顆",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        defaultValue: '"md"',
+        description: "頭像尺寸",
+      },
+      {
+        name: "spreadOnHover",
+        type: "boolean",
+        defaultValue: "true",
+        description: "滑鼠移入時整排散開",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/layout/avatar-group",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "accordion",
+    name: "手風琴",
+    nameEn: "Accordion",
+    category: "display",
+    description:
+      "可展開收合的問答清單，展開時高度以彈簧動畫撐開、內容再輕輕落下，有 smooth／spring／bounce 三種手感，支援單開與多開。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "items",
+        type: "{ value: string; title: ReactNode; content: ReactNode; disabled?: boolean }[]",
+        description: "項目清單",
+      },
+      {
+        name: "type",
+        type: '"single" | "multiple"',
+        defaultValue: '"single"',
+        description: "一次只開一項或可同時展開多項",
+      },
+      {
+        name: "defaultValue",
+        type: "string | string[]",
+        description: "初始展開的項目",
+      },
+      {
+        name: "collapsible",
+        type: "boolean",
+        defaultValue: "true",
+        description: "單開模式下允許把唯一展開的項目收起來",
+      },
+      {
+        name: "animation",
+        type: '"smooth" | "spring" | "bounce"',
+        defaultValue: '"smooth"',
+        description: "展開動畫的手感",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/layout/accordion",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "reorder-list",
+    name: "拖曳排序清單",
+    nameEn: "Reorder List",
+    category: "display",
+    description:
+      "抓住任一列上下拖動就能重新排序，被抓起的那列會浮起加陰影，其他列以彈簧動畫讓位。匯出 ReorderList 與 ReorderItem 兩個元件。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "values",
+        type: "T[]",
+        description: "目前排序的值（每個值必須是穩定的參考）",
+      },
+      {
+        name: "onReorder",
+        type: "(values: T[]) => void",
+        description: "拖曳過程中回報新的順序",
+      },
+      {
+        name: "axis",
+        type: '"x" | "y"',
+        defaultValue: '"y"',
+        description: "拖曳軸向",
+      },
+      {
+        name: "value（ReorderItem）",
+        type: "T",
+        description: "這一列在 values 裡對應的值",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/layout/reorder-list",
+      license: "MIT",
+    },
+  },
 ];

@@ -97,10 +97,11 @@ const frontVariantPreview: Record<MagicTabVariant, string> = {
     "group-hover:bg-[var(--secondary,oklch(0.97_0_0))] group-hover:text-[var(--secondary-foreground,oklch(0.205_0_0))] group-focus-visible:bg-[var(--secondary,oklch(0.97_0_0))] group-focus-visible:text-[var(--secondary-foreground,oklch(0.205_0_0))]",
 };
 
+// 對應 GodUI 主題的按鈕尺度 token（--button-px-* / --button-py-* / --button-text-*）
 const frontSize: Record<MagicTabSize, string> = {
   sm: "px-4 py-2 text-sm leading-5",
-  md: "px-5 py-2.5 text-base leading-6",
-  lg: "px-7 py-3 text-lg leading-7",
+  md: "px-6 py-3 text-sm leading-5",
+  lg: "px-8 py-4 text-base leading-6",
 };
 
 const firstEnabled = (items: MagicTabItem[]): string | undefined =>

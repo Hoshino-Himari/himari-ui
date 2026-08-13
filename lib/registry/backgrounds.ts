@@ -559,4 +559,192 @@ export const backgrounds: ComponentEntry[] = [
       license: "MIT",
     },
   },
+  {
+    slug: "blueprint-grid",
+    name: "藍圖格線",
+    nameEn: "Blueprint Grid",
+    category: "backgrounds",
+    description:
+      "工程製圖風的格線背景，可選直線、點陣或往地平線退去的透視地板；上頭有一道緩慢斜掃的光帶，游標經過的格子還會亮起來。純 CSS。",
+    dependencies: [],
+    props: [
+      {
+        name: "variant",
+        type: '"lines" | "dots" | "perspective"',
+        defaultValue: '"lines"',
+        description: "格線樣式",
+      },
+      { name: "cellSize", type: "number", defaultValue: "32", description: "格子邊長（px）" },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: '"var(--border, oklch(0.922 0 0))"',
+        description: "線條／點的顏色",
+      },
+      {
+        name: "sweep",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否顯示斜向掃光",
+      },
+      {
+        name: "sweepDuration",
+        type: "number",
+        defaultValue: "8",
+        description: "掃光走完一趟的秒數",
+      },
+      {
+        name: "spotlight",
+        type: "boolean",
+        defaultValue: "true",
+        description: "格子是否跟著游標亮起",
+      },
+      {
+        name: "spotlightColor",
+        type: "string",
+        defaultValue: '"var(--primary, oklch(0.205 0 0))"',
+        description: "亮起格子的顏色",
+      },
+      {
+        name: "spotlightRadius",
+        type: "number",
+        defaultValue: "200",
+        description: "游標光圈半徑（px）",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/backgrounds/blueprint-grid",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "pixel-grid",
+    name: "像素格網",
+    nameEn: "Pixel Grid",
+    category: "backgrounds",
+    description:
+      "整片小方塊隨機閃爍的 canvas 背景；互動模式下只有游標半徑內的方塊會亮起來，像一盞跟著滑鼠走的探照燈，離開畫面自動停止繪製。",
+    dependencies: [],
+    props: [
+      { name: "squareSize", type: "number", defaultValue: "4", description: "方塊邊長（px）" },
+      { name: "gridGap", type: "number", defaultValue: "6", description: "方塊間距（px）" },
+      {
+        name: "flickerChance",
+        type: "number",
+        defaultValue: "0.3",
+        description: "每秒重抽透明度的機率",
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "方塊顏色，未指定時取用 --foreground 並跟著主題切換",
+      },
+      {
+        name: "maxOpacity",
+        type: "number",
+        defaultValue: "0.3",
+        description: "方塊透明度上限 0–1",
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "true",
+        description: "只讓游標附近的方塊動；false 則整片自動閃爍",
+      },
+      {
+        name: "interactionRadius",
+        type: "number",
+        defaultValue: "120",
+        description: "游標影響半徑（px）",
+      },
+      {
+        name: "interactionStrength",
+        type: "number",
+        defaultValue: "1",
+        description: "游標亮起的強度 0–1",
+      },
+      {
+        name: "cursorReveal",
+        type: '"hidden" | "dim"',
+        defaultValue: '"hidden"',
+        description: "半徑外的方塊要完全隱形還是維持靜態微亮",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/backgrounds/pixel-grid",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "topographic-drift",
+    name: "等高線漂移",
+    nameEn: "Topographic Drift",
+    category: "backgrounds",
+    description:
+      "用 marching squares 畫出的地形等高線背景，整片高度場緩緩流動，等高線跟著長出又消失，安靜而有編輯感。",
+    dependencies: [],
+    props: [
+      { name: "lineCount", type: "number", defaultValue: "9", description: "等高線層數" },
+      { name: "speed", type: "number", defaultValue: "1", description: "流動速度倍率" },
+      {
+        name: "color",
+        type: "string",
+        description: "等高線顏色，未指定時取用 --foreground 並跟著主題切換",
+      },
+      {
+        name: "noiseScale",
+        type: "number",
+        defaultValue: "0.004",
+        description: "地形尺度，越小地勢越寬緩",
+      },
+      { name: "weight", type: "number", defaultValue: "1", description: "線寬（px）" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/backgrounds/topographic-drift",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "flow-field",
+    name: "流場",
+    nameEn: "Flow Field",
+    category: "backgrounds",
+    description:
+      "上千顆粒子順著會演化的雜訊向量場流動，拖出綢緞般的漸隱軌跡，背景色也自動跟著主題走。離開畫面或分頁時自動暫停。",
+    dependencies: [],
+    props: [
+      {
+        name: "particleCount",
+        type: "number",
+        defaultValue: "900",
+        description: "粒子數量上限（會依容器大小自動調整）",
+      },
+      {
+        name: "noiseScale",
+        type: "number",
+        defaultValue: "0.0016",
+        description: "向量場尺度，越小水流越寬緩",
+      },
+      { name: "speed", type: "number", defaultValue: "1", description: "流速倍率" },
+      {
+        name: "color",
+        type: "string",
+        description: "軌跡顏色，未指定時取用 --primary 並跟著主題切換",
+      },
+      {
+        name: "fade",
+        type: "number",
+        defaultValue: "0.06",
+        description: "每幀的殘影淡化量 0–1，越小尾巴越長",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/backgrounds/flow-field",
+      license: "MIT",
+    },
+  },
 ];
