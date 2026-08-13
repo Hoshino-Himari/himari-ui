@@ -120,4 +120,37 @@ export const navigation: ComponentEntry[] = [
       },
     ],
   },
+  {
+    slug: "segmented-control",
+    name: "分段控制器",
+    nameEn: "Segmented Control",
+    category: "navigation",
+    description:
+      "iOS 風格的選項列，選中的白色藥丸用 layoutId 在選項之間彈性滑動，支援受控／非受控、圖示與停用選項。適合檢視切換或篩選條件。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "options",
+        type: "{ label: ReactNode; value: string; icon?: ReactNode; disabled?: boolean }[]",
+        description: "選項清單",
+      },
+      { name: "value", type: "string", description: "受控模式的目前值" },
+      {
+        name: "defaultValue",
+        type: "string",
+        description: "非受控模式的初始值，不傳則選第一個",
+      },
+      { name: "size", type: '"sm" | "md" | "lg"', defaultValue: '"md"', description: "控制器尺寸" },
+      {
+        name: "onChange",
+        type: "(value: string) => void",
+        description: "切換選項時的回呼",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/navigation/segmented-control",
+      license: "MIT",
+    },
+  },
 ];

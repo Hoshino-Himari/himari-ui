@@ -103,6 +103,36 @@ export const demos: Record<string, ComponentType> = {
   "decrypt-reveal": load(() => import("./decrypt-reveal-demo")),
   "particle-reveal": load(() => import("./particle-reveal-demo")),
   frost: load(() => import("./frost-demo")),
+  // 按鈕（GodUI 移植）
+  "gooey-fab": load(() => import("./gooey-fab-demo")),
+  "hold-confirm-button": load(() => import("./hold-confirm-button-demo")),
+  "jelly-button": load(() => import("./jelly-button-demo")),
+  "slide-confirm-button": load(() => import("./slide-confirm-button-demo")),
+  "mask-button": load(() => import("./mask-button-demo")),
+  // 輸入與導覽（GodUI 移植）
+  "magic-input": load(() => import("./magic-input-demo")),
+  "segmented-control": load(() => import("./segmented-control-demo")),
+  // 浮層（GodUI 移植）
+  "animated-tooltip": load(() => import("./animated-tooltip-demo")),
+  "dynamic-island": load(() => import("./dynamic-island-demo")),
+  "morphing-dialog": load(() => import("./morphing-dialog-demo")),
+  toast: load(() => import("./toast-demo")),
+  drawer: load(() => import("./drawer-demo")),
+  // 展示區塊（GodUI 移植）
+  "image-compare": load(() => import("./image-compare-demo")),
+  "card-swap": load(() => import("./card-swap-demo")),
+  "split-flap-display": load(() => import("./split-flap-display-demo")),
+  stepper: load(() => import("./stepper-demo")),
+  // 文字特效（GodUI 移植）
+  "aurora-text": load(() => import("./aurora-text-demo")),
+  "elastic-text": load(() => import("./elastic-text-demo")),
+  highlighter: load(() => import("./highlighter-demo")),
+  // 效果與背景（GodUI 移植）
+  lamp: load(() => import("./lamp-demo")),
+  "particle-dissolve": load(() => import("./particle-dissolve-demo")),
+  "light-rays": load(() => import("./light-rays-demo")),
+  "liquid-metaballs": load(() => import("./liquid-metaballs-demo")),
+  "warp-starfield": load(() => import("./warp-starfield-demo")),
 };
 
 export function DemoHost({ slug }: { slug: string }) {

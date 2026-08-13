@@ -121,4 +121,67 @@ export const inputs: ComponentEntry[] = [
       },
     ],
   },
+  {
+    slug: "magic-input",
+    name: "魔法輸入框",
+    nameEn: "Magic Input",
+    category: "inputs",
+    description:
+      "聚焦時浮起並露出 3D 邊緣與彩虹流光陰影，可帶送出按鈕；status 控制送出生命週期，載入時邊緣化為進度條、成功／失敗掃過綠／紅色。",
+    dependencies: [],
+    props: [
+      {
+        name: "variant",
+        type: '"primary" | "secondary"',
+        defaultValue: '"primary"',
+        description: "3D 邊緣的顏色",
+      },
+      { name: "size", type: '"sm" | "md" | "lg"', defaultValue: '"md"', description: "輸入框尺寸" },
+      {
+        name: "depth",
+        type: '"focus" | "always"',
+        defaultValue: '"focus"',
+        description: "3D 立體感的出現時機：僅聚焦時或一直顯示",
+      },
+      {
+        name: "rainbow",
+        type: "boolean",
+        defaultValue: "true",
+        description: "聚焦時邊緣與陰影是否流動彩虹漸層",
+      },
+      {
+        name: "submitButton",
+        type: "boolean",
+        defaultValue: "false",
+        description: "顯示右側的箭頭送出按鈕",
+      },
+      {
+        name: "onSubmit",
+        type: "(value: string) => void",
+        description: "按 Enter 或點送出按鈕時帶目前值觸發；有傳就會顯示按鈕",
+      },
+      {
+        name: "submitLabel",
+        type: "string",
+        defaultValue: '"Submit"',
+        description: "送出按鈕的無障礙標籤",
+      },
+      {
+        name: "status",
+        type: '"idle" | "loading" | "success" | "error"',
+        defaultValue: '"idle"',
+        description: "送出生命週期（完全受控）",
+      },
+      {
+        name: "progress",
+        type: "number",
+        description: "0–100；loading 時有值為確定進度條，沒值為來回彈跳",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/inputs/magic-input",
+      license: "MIT",
+    },
+  },
 ];

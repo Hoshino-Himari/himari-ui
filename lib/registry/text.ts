@@ -205,4 +205,88 @@ export const text: ComponentEntry[] = [
     ],
     source: { label: "MagicUI", url: "https://magicui.design/docs/components/spinning-text", license: "MIT" },
   },
+  {
+    slug: "aurora-text",
+    name: "極光文字",
+    nameEn: "Aurora Text",
+    category: "text",
+    description:
+      "彩虹漸層像極光一樣在文字上緩緩流動，離開視窗時自動暫停動畫以節省效能。適合標題中的品牌名或關鍵詞。",
+    dependencies: [],
+    props: [
+      { name: "children", type: "ReactNode", description: "要套上極光效果的文字" },
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: "八色彩虹光譜",
+        description: "漸層循環的顏色（會自動首尾相接無縫循環）",
+      },
+      { name: "speed", type: "number", defaultValue: "1", description: "速度倍率，1 約為每輪 10 秒，越大越快" },
+      { name: "className", type: "string", description: "疊加在容器上的 class（字級、字重在這裡設定）" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/text/aurora-text",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "elastic-text",
+    name: "彈性文字",
+    nameEn: "Elastic Text",
+    category: "text",
+    description:
+      "一道聚光燈掃過文字，被照到的字元以彈簧動畫變粗再回彈；也可切換為跟隨滑鼠的 hover 模式。需搭配帶 wght 軸的 variable font。",
+    dependencies: ["framer-motion"],
+    props: [
+      { name: "children", type: "ReactNode", description: "要套上彈性字重效果的文字" },
+      {
+        name: "mode",
+        type: '"auto" | "hover"',
+        defaultValue: '"auto"',
+        description: "auto：聚光燈自動掃過；hover：字重跟隨滑鼠位置",
+      },
+      { name: "minWeight", type: "number", defaultValue: "300", description: "靜止時的最細字重" },
+      { name: "maxWeight", type: "number", defaultValue: "900", description: "聚光燈／滑鼠下的最粗字重" },
+      { name: "duration", type: "number", defaultValue: "2", description: "auto 模式掃過一輪的秒數" },
+      { name: "loop", type: "boolean", defaultValue: "true", description: "auto 模式是否來回循環" },
+      { name: "startOnView", type: "boolean", defaultValue: "true", description: "捲動進入視窗後才開始掃動" },
+      { name: "radius", type: "number", defaultValue: "120", description: "hover 模式滑鼠影響半徑（px）" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/text/elastic-text",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "highlighter",
+    name: "螢光筆標註",
+    nameEn: "Highlighter",
+    category: "text",
+    description:
+      "以手繪風格的螢光筆、底線、圈選、框線等標註強調行內文字，進場時有描繪動畫（基於 rough-notation）。適合文案中的重點詞。",
+    dependencies: ["framer-motion", "rough-notation"],
+    props: [
+      { name: "children", type: "ReactNode", description: "要標註的行內文字" },
+      {
+        name: "action",
+        type: '"highlight" | "underline" | "box" | "circle" | "strike-through" | "crossed-off" | "bracket"',
+        defaultValue: '"highlight"',
+        description: "標註樣式",
+      },
+      { name: "color", type: "string", defaultValue: '"#ffd1dc"', description: "標註顏色（任何 CSS 顏色）" },
+      { name: "strokeWidth", type: "number", defaultValue: "1.5", description: "手繪筆觸粗細" },
+      { name: "animationDuration", type: "number", defaultValue: "600", description: "描繪動畫時長（毫秒）" },
+      { name: "iterations", type: "number", defaultValue: "2", description: "描繪次數，越多越有手繪感" },
+      { name: "padding", type: "number", defaultValue: "2", description: "文字與標註之間的間距" },
+      { name: "multiline", type: "boolean", defaultValue: "true", description: "允許標註跨行" },
+      { name: "isView", type: "boolean", defaultValue: "false", description: "捲動進入視窗後才描繪標註" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/text/highlighter",
+      license: "MIT",
+    },
+  },
 ];

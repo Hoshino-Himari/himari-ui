@@ -410,4 +410,153 @@ export const backgrounds: ComponentEntry[] = [
       license: "MIT",
     },
   },
+  {
+    slug: "light-rays",
+    name: "光芒射線",
+    nameEn: "Light Rays",
+    category: "backgrounds",
+    description:
+      "一扇柔和的體積光從上方灑落，緩慢擺動呼吸並可疊底片顆粒，純 CSS 實作。適合深色 hero 或氛圍感區塊的背景。",
+    dependencies: [],
+    props: [
+      {
+        name: "rayCount",
+        type: "number",
+        defaultValue: "14",
+        description: "光扇中的射線數量",
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: '"var(--primary, #38bdf8)"',
+        description: "射線顏色，任何 CSS 顏色字串",
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "擺動速度倍率",
+      },
+      {
+        name: "angle",
+        type: "number",
+        defaultValue: "0",
+        description: "光扇的基準角度（度）",
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.6",
+        description: "射線整體不透明度 0–1",
+      },
+      {
+        name: "grain",
+        type: "number",
+        defaultValue: "0.05",
+        description: "底片顆粒強度 0–1，0 為關閉顆粒層",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/backgrounds/light-rays",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "liquid-metaballs",
+    name: "液態融球",
+    nameEn: "Liquid Metaballs",
+    category: "backgrounds",
+    description:
+      "柔軟色球在容器內漂移碰撞，經 SVG goo 濾鏡融合成液態效果，可加一顆跟隨游標的互動球；離開視窗自動暫停並尊重減少動態偏好。",
+    dependencies: [],
+    props: [
+      {
+        name: "blobCount",
+        type: "number",
+        defaultValue: "7",
+        description: "漂浮色球數量",
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#6366f1", "#a855f7", "#ec4899", "#06b6d4"]',
+        description: "色球顏色，依序輪流套用",
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "漂移速度倍率",
+      },
+      {
+        name: "gooeyness",
+        type: "number",
+        defaultValue: "16",
+        description: "融合強度（模糊 stdDeviation），越大越黏稠",
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否加入跟隨游標的互動球",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/backgrounds/liquid-metaballs",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "warp-starfield",
+    name: "曲速星空",
+    nameEn: "Warp Starfield",
+    category: "backgrounds",
+    description:
+      "具景深的星海朝觀者飛來，游標移動帶出視差偏移，可切換超空間拉伸模式；離開視窗自動暫停並尊重減少動態偏好。適合科幻感 hero 背景。",
+    dependencies: [],
+    props: [
+      {
+        name: "starCount",
+        type: "number",
+        defaultValue: "400",
+        description: "星星數量，小面積會自動縮減",
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "前進速度倍率",
+      },
+      {
+        name: "depth",
+        type: "number",
+        defaultValue: "1.5",
+        description: "星場深度，越大越深邃、感覺越慢",
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "星星顏色，預設繼承文字色並隨主題切換重新解析",
+      },
+      {
+        name: "warp",
+        type: "boolean",
+        defaultValue: "false",
+        description: "超空間模式：星星拉伸成光痕",
+      },
+      {
+        name: "parallax",
+        type: "number",
+        defaultValue: "30",
+        description: "游標視差強度（邊緣時中心偏移的 px）",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/backgrounds/warp-starfield",
+      license: "MIT",
+    },
+  },
 ];

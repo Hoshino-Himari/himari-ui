@@ -501,4 +501,104 @@ export const effects: ComponentEntry[] = [
       license: "MIT",
     },
   },
+  {
+    slug: "lamp",
+    name: "聚光燈效",
+    nameEn: "Lamp",
+    category: "effects",
+    description:
+      "捲動進入視野時，兩道錐形光束向兩側點亮匯成一盞聚光燈，標題從光暈中浮現。適合深色頁面的段落開場或 hero 標題。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "color",
+        type: "string",
+        defaultValue: '"var(--primary, #22d3ee)"',
+        description: "燈光顏色，任何 CSS 顏色字串",
+      },
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "燈光下方浮現的內容（標題、副標等）",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/effects/lamp",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "particle-dissolve",
+    name: "粒子溶解",
+    nameEn: "Particle Dissolve",
+    category: "effects",
+    description:
+      "把文字或圖片取樣成粒子，從四散狀態聚合成形，也可反向散開或來回循環。適合戲劇性的進場標題或轉場效果。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "要化成粒子的文字；設定 src 時忽略",
+      },
+      {
+        name: "src",
+        type: "string",
+        description: "取樣成粒子的圖片網址（保留原圖顏色）",
+      },
+      {
+        name: "width",
+        type: "number",
+        defaultValue: "640",
+        description: "畫布寬度（CSS px）",
+      },
+      {
+        name: "height",
+        type: "number",
+        defaultValue: "240",
+        description: "畫布高度（CSS px）",
+      },
+      {
+        name: "mode",
+        type: '"assemble" | "disperse" | "loop"',
+        defaultValue: '"assemble"',
+        description: "觸發後的行為：聚合、散開或來回循環",
+      },
+      {
+        name: "trigger",
+        type: '"mount" | "in-view" | "hover"',
+        defaultValue: '"in-view"',
+        description: "動畫開始時機",
+      },
+      {
+        name: "density",
+        type: "number",
+        defaultValue: "4",
+        description: "取樣間距（px），越小粒子越密、越吃效能",
+      },
+      {
+        name: "particleSize",
+        type: "number",
+        defaultValue: "2",
+        description: "粒子邊長（px）",
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "文字粒子顏色，預設繼承文字色",
+      },
+      {
+        name: "font",
+        type: "string",
+        defaultValue: '"bold 140px ui-sans-serif, system-ui, sans-serif"',
+        description: "文字粒子的字型設定",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/effects/particle-dissolve",
+      license: "MIT",
+    },
+  },
 ];

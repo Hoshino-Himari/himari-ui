@@ -3,7 +3,36 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { Category, ComponentEntry } from "@/lib/registry/types";
+
+const listVariants = {
+  open: {
+    height: "auto",
+    opacity: 1,
+    transition: {
+      height: { type: "spring" as const, stiffness: 320, damping: 32 },
+      opacity: { duration: 0.15 },
+      staggerChildren: 0.022,
+      delayChildren: 0.03,
+    },
+  },
+  closed: {
+    height: 0,
+    opacity: 0,
+    transition: {
+      height: { type: "spring" as const, stiffness: 420, damping: 40 },
+      opacity: { duration: 0.12 },
+      staggerChildren: 0.012,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const itemVariants = {
+  open: { opacity: 1, x: 0, filter: "blur(0px)" },
+  closed: { opacity: 0, x: -14, filter: "blur(3px)" },
+};
 
 type Props = {
   categories: Category[];
@@ -15,6 +44,7 @@ export function Sidebar({ categories, entries }: Props) {
   const [query, setQuery] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
+  const reducedMotion = useReducedMotion();
 
   function toggleCategory(id: string) {
     setCollapsed((prev) => {
@@ -61,44 +91,60 @@ export function Sidebar({ categories, entries }: Props) {
               aria-expanded={isOpen}
               className="mb-1 flex w-full items-center gap-1.5 rounded-md px-2 py-1 font-display text-xs font-bold uppercase tracking-widest text-ink-faint transition-colors duration-(--dur-fast) hover:bg-paper-3 hover:text-ink-mute"
             >
-              <svg
+              <motion.svg
                 viewBox="0 0 12 12"
                 aria-hidden
-                className={`size-2.5 shrink-0 fill-none stroke-current stroke-[1.75] transition-transform duration-(--dur-fast) ease-(--ease-out) ${
-                  isOpen ? "rotate-90" : ""
-                }`}
+                animate={{ rotate: isOpen ? 90 : 0 }}
+                transition={
+                  reducedMotion
+                    ? { duration: 0 }
+                    : { type: "spring", stiffness: 520, damping: 18 }
+                }
+                className="size-2.5 shrink-0 fill-none stroke-current stroke-[1.75]"
               >
                 <path d="M4 2.5 8 6l-4 3.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              </motion.svg>
               {cat.name}
               <span className="ml-auto font-mono text-[10px] text-ink-faint/70">
                 {items.length}
               </span>
             </button>
-            {isOpen && (
-            <ul className="flex flex-col gap-0.5">
-              {items.map((item) => {
-                const href = `/components/${item.slug}`;
-                const active = pathname === href;
-                return (
-                  <li key={item.slug}>
-                    <Link
-                      href={href}
-                      onClick={() => setMobileOpen(false)}
-                      aria-current={active ? "page" : undefined}
-                      className={`block rounded-md px-2 py-1.5 text-sm transition-colors duration-(--dur-fast) ${
-                        active
-                          ? "bg-accent-soft text-accent"
-                          : "text-ink-mute hover:bg-paper-3 hover:text-ink"
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-            )}
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.ul
+                  key="list"
+                  initial="closed"
+                  animate="open"
+                  exit="closed"
+                  variants={reducedMotion ? undefined : listVariants}
+                  className="flex flex-col gap-0.5 overflow-hidden"
+                >
+                  {items.map((item) => {
+                    const href = `/components/${item.slug}`;
+                    const active = pathname === href;
+                    return (
+                      <motion.li
+                        key={item.slug}
+                        variants={reducedMotion ? undefined : itemVariants}
+                      >
+                        <Link
+                          href={href}
+                          onClick={() => setMobileOpen(false)}
+                          aria-current={active ? "page" : undefined}
+                          className={`block rounded-md px-2 py-1.5 text-sm transition-colors duration-(--dur-fast) ${
+                            active
+                              ? "bg-accent-soft text-accent"
+                              : "text-ink-mute hover:bg-paper-3 hover:text-ink"
+                          }`}
+                        >
+                          {item.name}
+                        </Link>
+                      </motion.li>
+                    );
+                  })}
+                </motion.ul>
+              )}
+            </AnimatePresence>
           </div>
         );
       })}

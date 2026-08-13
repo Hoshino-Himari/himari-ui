@@ -153,4 +153,118 @@ export const display: ComponentEntry[] = [
       license: "MIT",
     },
   },
+  {
+    slug: "image-compare",
+    name: "影像比較滑桿",
+    nameEn: "Image Compare",
+    category: "display",
+    description:
+      "拖曳分隔把手在前後兩層內容之間滑動對比，支援水平／垂直方向與鍵盤方向鍵操作。適合展示修圖前後或改版前後的差異。",
+    dependencies: [],
+    props: [
+      { name: "before", type: "ReactNode", description: "把手左側（或上方）顯示的「之前」內容" },
+      { name: "after", type: "ReactNode", description: "底層的「之後」內容，決定整體尺寸" },
+      { name: "initial", type: "number", defaultValue: "50", description: "把手初始位置（0–100）" },
+      {
+        name: "orientation",
+        type: '"horizontal" | "vertical"',
+        defaultValue: '"horizontal"',
+        description: "滑動方向",
+      },
+      { name: "beforeLabel", type: "string", description: "左上角的「之前」標籤文字" },
+      { name: "afterLabel", type: "string", description: "右上角的「之後」標籤文字" },
+      { name: "onChange", type: "(position: number) => void", description: "把手位置改變時的回呼" },
+      { name: "className", type: "string", description: "疊加在容器上的 class" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/layout/image-compare",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "card-swap",
+    name: "卡片交換",
+    nameEn: "Card Swap",
+    category: "display",
+    description:
+      "一疊 3D 堆疊卡片自動輪播交換順序，滑鼠移動時整疊卡片跟著視差傾斜，附前後切換按鈕。適合輪播特色亮點或作品集。",
+    dependencies: ["framer-motion"],
+    props: [
+      { name: "children", type: "ReactNode", description: "要輪播的卡片（建議 2–5 張），由前到後排列" },
+      { name: "interval", type: "number", defaultValue: "3500", description: "自動輪播間隔（毫秒），0 表示停用" },
+      { name: "pauseOnHover", type: "boolean", defaultValue: "true", description: "滑鼠移入時暫停自動輪播" },
+      { name: "offsetY", type: "number", defaultValue: "28", description: "堆疊卡片之間的垂直位移（px）" },
+      { name: "offsetX", type: "number", defaultValue: "22", description: "堆疊卡片之間的水平位移（px）" },
+      { name: "scaleStep", type: "number", defaultValue: "0.06", description: "每往後一張卡片縮小的比例" },
+      { name: "className", type: "string", description: "疊加在容器上的 class（記得給定寬高）" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/layout/card-swap",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "split-flap-display",
+    name: "翻牌顯示器",
+    nameEn: "Split Flap Display",
+    category: "display",
+    description:
+      "機場看板風格的機械翻字板，捲動進入視窗後逐欄波浪式翻牌直到定格成目標文字。適合班次表、倒數或復古告示看板。",
+    dependencies: ["framer-motion"],
+    props: [
+      { name: "value", type: "string", description: "看板定格的文字（以大寫對照 charset 顯示）" },
+      { name: "length", type: "number", description: "固定的翻牌欄數，較短的值會補空白、較長會截斷" },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        defaultValue: '"left"',
+        description: "文字在較寬 length 內的對齊方式",
+      },
+      { name: "size", type: '"sm" | "md" | "lg"', defaultValue: '"md"', description: "翻牌尺寸" },
+      {
+        name: "charset",
+        type: "string | string[]",
+        defaultValue: "A–Z、0–9 與常見符號",
+        description: "翻牌輪轉的字元序列；傳陣列可讓每一欄有自己的字盤",
+      },
+      { name: "stagger", type: "number", defaultValue: "0.06", description: "相鄰欄位開始翻牌的錯開秒數（波浪感）" },
+      { name: "maxFlaps", type: "number", defaultValue: "12", description: "單欄定格前最多翻動的次數" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/layout/split-flap-display",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "stepper",
+    name: "步驟指示器",
+    nameEn: "Stepper",
+    category: "display",
+    description:
+      "水平或垂直的多步驟進度指示：完成的步驟以路徑動畫打勾、連接線以彈簧動畫填滿。適合結帳流程或多步驟表單。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "steps",
+        type: "{ label: ReactNode; description?: ReactNode }[]",
+        description: "步驟清單：標題與可選的描述",
+      },
+      { name: "active", type: "number", description: "目前步驟的索引（從 0 起算），之前的步驟顯示為完成" },
+      {
+        name: "orientation",
+        type: '"horizontal" | "vertical"',
+        defaultValue: '"horizontal"',
+        description: "排列方向",
+      },
+      { name: "className", type: "string", description: "疊加在容器上的 class" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/layout/stepper",
+      license: "MIT",
+    },
+  },
 ];
