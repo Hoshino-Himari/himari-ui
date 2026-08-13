@@ -2,10 +2,10 @@
 
 import { ThreeDMarquee } from "@/components/ui/three-d-marquee";
 const imageSet = [
-  "/demos/ridgeline.png",
-  "/demos/tidal-pools.png",
-  "/demos/rainforest.png",
-  "/demos/neon-arcade.png",
+  "/demos/ridgeline.webp",
+  "/demos/tidal-pools.webp",
+  "/demos/rainforest.webp",
+  "/demos/neon-arcade.webp",
 ];
 
 const images = Array.from({ length: 16 }, (_, i) => imageSet[i % imageSet.length]);

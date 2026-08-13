@@ -12,12 +12,12 @@ const theme = {
 } as CSSProperties;
 
 const avatars = [
-  { src: "/demos/avatar-amber.png", alt: "示範頭像一" },
-  { src: "/demos/avatar-violet.png", alt: "示範頭像二" },
-  { src: "/demos/avatar-teal.png", alt: "示範頭像三" },
-  { src: "/demos/avatar-cobalt.png", alt: "示範頭像四" },
-  { src: "/demos/avatar-magenta.png", alt: "示範頭像五" },
-  { src: "/demos/avatar-slate.png", alt: "示範頭像六" },
+  { src: "/demos/avatar-amber.webp", alt: "示範頭像一" },
+  { src: "/demos/avatar-violet.webp", alt: "示範頭像二" },
+  { src: "/demos/avatar-teal.webp", alt: "示範頭像三" },
+  { src: "/demos/avatar-cobalt.webp", alt: "示範頭像四" },
+  { src: "/demos/avatar-magenta.webp", alt: "示範頭像五" },
+  { src: "/demos/avatar-slate.webp", alt: "示範頭像六" },
 ];
 
 export default function AvatarGroupDemo() {

@@ -4,22 +4,22 @@ import { ImageAccordion } from "@/components/ui/image-accordion";
 
 const panels = [
   {
-    image: "/demos/ridgeline.png",
+    image: "/demos/ridgeline.webp",
     title: "稜線",
     description: "清晨五點的第一道光。",
   },
   {
-    image: "/demos/tidal-pools.png",
+    image: "/demos/tidal-pools.webp",
     title: "潮汐",
     description: "退潮後留下的水窪。",
   },
   {
-    image: "/demos/rainforest.png",
+    image: "/demos/rainforest.webp",
     title: "苔原",
     description: "雨後整片森林都在滴水。",
   },
   {
-    image: "/demos/neon-arcade.png",
+    image: "/demos/neon-arcade.webp",
     title: "霓虹",
     description: "凌晨兩點的騎樓招牌。",
   },

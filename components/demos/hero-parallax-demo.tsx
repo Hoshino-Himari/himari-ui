@@ -3,10 +3,10 @@
 import { useRef } from "react";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 const images = [
-  "/demos/ridgeline.png",
-  "/demos/tidal-pools.png",
-  "/demos/rainforest.png",
-  "/demos/neon-arcade.png",
+  "/demos/ridgeline.webp",
+  "/demos/tidal-pools.webp",
+  "/demos/rainforest.webp",
+  "/demos/neon-arcade.webp",
 ];
 
 const products = Array.from({ length: 15 }, (_, i) => {

@@ -2,10 +2,10 @@
 
 import { ImageTrail } from "@/components/ui/image-trail";
 const images = [
-  "/demos/ridgeline.png",
-  "/demos/tidal-pools.png",
-  "/demos/rainforest.png",
-  "/demos/neon-arcade.png",
+  "/demos/ridgeline.webp",
+  "/demos/tidal-pools.webp",
+  "/demos/rainforest.webp",
+  "/demos/neon-arcade.webp",
 ];
 
 export default function ImageTrailDemo() {

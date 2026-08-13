@@ -4,12 +4,12 @@ import { AvatarCircles } from "@/components/ui/avatar-circles";
 
 // 示範不給 profileUrl，頭像就只是頭像，不會變成連結
 const avatars = [
-  "/demos/avatar-amber.png",
-  "/demos/avatar-violet.png",
-  "/demos/avatar-teal.png",
-  "/demos/avatar-cobalt.png",
-  "/demos/avatar-magenta.png",
-  "/demos/avatar-slate.png",
+  "/demos/avatar-amber.webp",
+  "/demos/avatar-violet.webp",
+  "/demos/avatar-teal.webp",
+  "/demos/avatar-cobalt.webp",
+  "/demos/avatar-magenta.webp",
+  "/demos/avatar-slate.webp",
 ].map((imageUrl) => ({ imageUrl }));
 
 export default function AvatarCirclesDemo() {

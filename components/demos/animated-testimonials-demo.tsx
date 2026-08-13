@@ -17,19 +17,19 @@ const testimonials = [
     quote: "一道光帶沿著按鈕邊緣繞行， 用來強調頁面上最重要的那顆行動呼籲。",
     name: "微光按鈕",
     role: "按鈕 / Shimmer Button",
-    src: "/demos/ridgeline.png",
+    src: "/demos/ridgeline.webp",
   },
   {
     quote: "漸層色彩在文字上緩緩流動， 離開視窗時自動暫停動畫省效能。",
     name: "極光文字",
     role: "文字特效 / Aurora Text",
-    src: "/demos/neon-arcade.png",
+    src: "/demos/neon-arcade.webp",
   },
   {
     quote: "上千顆粒子順著雜訊向量場流動， 拖出綢緞般的漸隱軌跡。",
     name: "流場",
     role: "背景特效 / Flow Field",
-    src: "/demos/rainforest.png",
+    src: "/demos/rainforest.webp",
   },
 ];
 
