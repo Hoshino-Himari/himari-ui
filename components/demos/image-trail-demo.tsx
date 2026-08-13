@@ -1,11 +1,12 @@
 "use client";
 
 import { ImageTrail } from "@/components/ui/image-trail";
-import { gradientImage, gradientPairs } from "./_gradient-image";
-
-const images = gradientPairs.map(([from, to], i) =>
-  gradientImage(from, to, `${i + 1}`, 400, 400),
-);
+const images = [
+  "/demos/ridgeline.png",
+  "/demos/tidal-pools.png",
+  "/demos/rainforest.png",
+  "/demos/neon-arcade.png",
+];
 
 export default function ImageTrailDemo() {
   return (

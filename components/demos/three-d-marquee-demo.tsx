@@ -1,12 +1,14 @@
 "use client";
 
 import { ThreeDMarquee } from "@/components/ui/three-d-marquee";
-import { gradientImage, gradientPairs } from "./_gradient-image";
+const imageSet = [
+  "/demos/ridgeline.png",
+  "/demos/tidal-pools.png",
+  "/demos/rainforest.png",
+  "/demos/neon-arcade.png",
+];
 
-const images = Array.from({ length: 16 }, (_, i) => {
-  const [from, to] = gradientPairs[i % gradientPairs.length];
-  return gradientImage(from, to, `${i + 1}`, 400, 300);
-});
+const images = Array.from({ length: 16 }, (_, i) => imageSet[i % imageSet.length]);
 
 export default function ThreeDMarqueeDemo() {
   return (

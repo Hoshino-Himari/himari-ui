@@ -3,9 +3,14 @@
 import { AvatarCircles } from "@/components/ui/avatar-circles";
 
 // 示範不給 profileUrl，頭像就只是頭像，不會變成連結
-const avatars = ["himari", "akiu", "yuki", "sora", "ren", "mio"].map(
-  (name) => ({ imageUrl: `https://avatar.vercel.sh/${name}` })
-);
+const avatars = [
+  "/demos/avatar-amber.png",
+  "/demos/avatar-violet.png",
+  "/demos/avatar-teal.png",
+  "/demos/avatar-cobalt.png",
+  "/demos/avatar-magenta.png",
+  "/demos/avatar-slate.png",
+].map((imageUrl) => ({ imageUrl }));
 
 export default function AvatarCirclesDemo() {
   return (

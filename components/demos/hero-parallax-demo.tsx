@@ -2,13 +2,17 @@
 
 import { useRef } from "react";
 import { HeroParallax } from "@/components/ui/hero-parallax";
-import { gradientImage, gradientPairs } from "./_gradient-image";
+const images = [
+  "/demos/ridgeline.png",
+  "/demos/tidal-pools.png",
+  "/demos/rainforest.png",
+  "/demos/neon-arcade.png",
+];
 
 const products = Array.from({ length: 15 }, (_, i) => {
-  const [from, to] = gradientPairs[i % gradientPairs.length];
   return {
     title: `作品 ${String(i + 1).padStart(2, "0")}`,
-    thumbnail: gradientImage(from, to, `${i + 1}`, 800, 500),
+    thumbnail: images[i % images.length],
   };
 });
 

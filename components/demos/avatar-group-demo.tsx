@@ -2,7 +2,6 @@
 
 import type { CSSProperties } from "react";
 import { AvatarGroup } from "@/components/ui/avatar-group";
-import { gradientImage } from "./_gradient-image";
 
 // 元件的顏色吃 CSS 變數（帶預設值），這裡換成本站的深色主題
 const theme = {
@@ -13,12 +12,12 @@ const theme = {
 } as CSSProperties;
 
 const avatars = [
-  { src: gradientImage("#f59e0b", "#b45309", "王", 200, 200), alt: "王", fallback: "王" },
-  { src: gradientImage("#8b5cf6", "#4c1d95", "林", 200, 200), alt: "林", fallback: "林" },
-  { src: gradientImage("#10b981", "#065f46", "陳", 200, 200), alt: "陳", fallback: "陳" },
-  { fallback: "李", alt: "李" },
-  { fallback: "張", alt: "張" },
-  { fallback: "黃", alt: "黃" },
+  { src: "/demos/avatar-amber.png", alt: "示範頭像一" },
+  { src: "/demos/avatar-violet.png", alt: "示範頭像二" },
+  { src: "/demos/avatar-teal.png", alt: "示範頭像三" },
+  { src: "/demos/avatar-cobalt.png", alt: "示範頭像四" },
+  { src: "/demos/avatar-magenta.png", alt: "示範頭像五" },
+  { src: "/demos/avatar-slate.png", alt: "示範頭像六" },
 ];
 
 export default function AvatarGroupDemo() {
@@ -26,7 +25,7 @@ export default function AvatarGroupDemo() {
     <div className="flex flex-col items-center gap-6 py-8" style={theme}>
       <AvatarGroup avatars={avatars} max={4} size="lg" />
       <p className="text-sm text-ink-mute">
-        滑鼠移上去整排會散開，第四顆之後收成 +N（最後三顆示範沒有圖片時的文字縮寫）
+        滑鼠移上去整排會散開，第四顆之後收成 +N。
       </p>
     </div>
   );
