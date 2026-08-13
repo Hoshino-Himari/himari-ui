@@ -601,4 +601,276 @@ export const effects: ComponentEntry[] = [
       license: "MIT",
     },
   },
+  {
+    slug: "spotlight-reveal",
+    name: "聚光燈揭露",
+    nameEn: "Spotlight Reveal",
+    category: "effects",
+    description:
+      "上下兩層內容疊在一起，游標所在的圓形範圍會把上層挖穿、露出底下那層；沒有游標時光圈自己緩慢繞圈，點一下可以釘住。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "reveal",
+        type: "ReactNode",
+        description: "藏在下層、被光圈照到才露出的內容",
+      },
+      { name: "children", type: "ReactNode", description: "上層的封面內容" },
+      { name: "radius", type: "number", defaultValue: "150", description: "光圈半徑（px）" },
+      {
+        name: "softness",
+        type: "number",
+        defaultValue: "0.55",
+        description: "邊緣柔化程度，0 為硬邊、1 極柔",
+      },
+      {
+        name: "ease",
+        type: "number",
+        defaultValue: "0.16",
+        description: "光圈跟隨的緩動，越小越拖曳",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/effects/spotlight-reveal",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "fluid-cursor",
+    name: "流體游標",
+    nameEn: "Fluid Cursor",
+    category: "effects",
+    description:
+      "一顆貼著游標跑的圓點，後面拖著慢半拍的模糊光暈，滑到連結或按鈕上會放大；預設用 difference 混合模式把底下畫面反相。只在滑鼠裝置啟用。",
+    dependencies: [],
+    props: [
+      { name: "size", type: "number", defaultValue: "18", description: "圓點直徑（px）" },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: '"white"',
+        description: "圓點顏色；搭配 blend 時白色是乾淨的反相",
+      },
+      {
+        name: "blend",
+        type: "boolean",
+        defaultValue: "true",
+        description: "用 mix-blend-mode: difference 反相下層畫面",
+      },
+      {
+        name: "trail",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否拖一團慢半拍的光暈",
+      },
+      {
+        name: "containerRef",
+        type: "RefObject<HTMLElement | null>",
+        description: "限定在某個容器內（容器要是 relative）；不傳則作用於整頁",
+      },
+      {
+        name: "interactiveSelector",
+        type: "string",
+        defaultValue: '"a, button, [role=\'button\'], [data-cursor]"',
+        description: "滑過會放大的元素選擇器",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/effects/fluid-cursor",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "image-trail",
+    name: "圖片拖尾",
+    nameEn: "Image Trail",
+    category: "effects",
+    description:
+      "游標在區域內移動時，一張張圖片沿著軌跡依序浮現又淡出，並朝移動方向微微傾斜；開啟減少動態時改成一排靜態小圖。",
+    dependencies: [],
+    props: [
+      { name: "images", type: "string[]", description: "依序循環使用的圖片網址" },
+      {
+        name: "threshold",
+        type: "number",
+        defaultValue: "64",
+        description: "兩張圖之間至少要移動的距離（px）",
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "750",
+        description: "每張圖的生命週期（毫秒）",
+      },
+      {
+        name: "max",
+        type: "number",
+        defaultValue: "12",
+        description: "同時存活的圖片上限（DOM 物件池大小）",
+      },
+      { name: "size", type: "number", defaultValue: "180", description: "每張圖的邊長（px）" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/effects/image-trail",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "beam-draw",
+    name: "光束描繪",
+    nameEn: "Beam Draw",
+    category: "effects",
+    description:
+      "一組發光曲線隨著捲動進度從左往右畫出來，往回捲會倒著收回去，適合當章節之間的視覺串接。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "paths",
+        type: "string[]",
+        description: "SVG path 的 d 字串（畫布為 1000×400），不傳則用預設光束",
+      },
+      { name: "strokeWidth", type: "number", defaultValue: "2", description: "線寬" },
+      {
+        name: "container",
+        type: "RefObject<HTMLElement | null>",
+        description: "監聽捲動的容器，不傳則監聽整個視窗",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/effects/beam-draw",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "gravity",
+    name: "重力場",
+    nameEn: "Gravity",
+    category: "effects",
+    description:
+      "用 matter-js 跑真實剛體物理：任何 DOM 元素包進 MatterBody 就會掉落、碰撞、堆疊，還能用滑鼠抓起來甩。離開畫面或切換分頁自動暫停。",
+    dependencies: ["matter-js"],
+    props: [
+      {
+        name: "gravity",
+        type: "{ x: number; y: number }",
+        defaultValue: "{ x: 0, y: 1 }",
+        description: "重力向量，y: 1 往下掉、{0,0} 漂浮",
+      },
+      {
+        name: "autoStart",
+        type: "boolean",
+        defaultValue: "true",
+        description: "掛載後立刻開始模擬",
+      },
+      {
+        name: "addTopWall",
+        type: "boolean",
+        defaultValue: "true",
+        description: "補上頂部牆面，避免物體被甩出去",
+      },
+      {
+        name: "restitution",
+        type: "number",
+        defaultValue: "0.4",
+        description: "彈性係數 0–1",
+      },
+      {
+        name: "x / y（MatterBody）",
+        type: "number | string",
+        defaultValue: '"50%" / "0%"',
+        description: "初始位置，可用百分比或 px",
+      },
+      {
+        name: "bodyType（MatterBody）",
+        type: '"rectangle" | "circle"',
+        defaultValue: '"rectangle"',
+        description: "碰撞形狀",
+      },
+      {
+        name: "isDraggable（MatterBody）",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否可以用滑鼠抓取",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/visualizations/gravity",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "scroll-timeline",
+    name: "捲動時間軸",
+    nameEn: "Scroll Timeline",
+    category: "effects",
+    description:
+      "左側一條軌道隨著捲動進度長出來，每個節點的內容依序淡入上移，適合沿革、產品路線圖或案例流程。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "data",
+        type: "{ title: string; date?: string; content: ReactNode }[]",
+        description: "時間軸項目",
+      },
+      {
+        name: "container",
+        type: "RefObject<HTMLElement | null>",
+        description: "監聽捲動的容器，不傳則監聽整個視窗",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/visualizations/scroll-timeline",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "world-map",
+    name: "世界地圖",
+    nameEn: "World Map",
+    category: "effects",
+    description:
+      "點陣世界地圖上畫出城市之間的弧線航線，光束沿著弧線一段段畫出來並循環，端點還有一圈擴散的漣漪。適合展示服務涵蓋範圍或全球節點。",
+    dependencies: ["dotted-map", "framer-motion"],
+    props: [
+      {
+        name: "connections",
+        type: "{ start: { lat: number; lng: number; label?: string }; end: {...} }[]",
+        description: "要畫的航線，不傳則用一組全球示範航線",
+      },
+      {
+        name: "lineColor",
+        type: "string",
+        defaultValue: '"var(--primary, oklch(0.205 0 0))"',
+        description: "航線與端點的顏色",
+      },
+      {
+        name: "dotColor",
+        type: "string",
+        description: "陸地點陣的顏色",
+      },
+      {
+        name: "loop",
+        type: "boolean",
+        defaultValue: "true",
+        description: "航線是否循環重畫",
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "1.6",
+        description: "一條航線畫完的秒數",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/visualizations/world-map",
+      license: "MIT",
+    },
+  },
 ];

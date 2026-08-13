@@ -158,6 +158,14 @@ export const demos: Record<string, ComponentType> = {
   "pixel-grid": load(() => import("./pixel-grid-demo")),
   "topographic-drift": load(() => import("./topographic-drift-demo")),
   "flow-field": load(() => import("./flow-field-demo")),
+  // 效果（GodUI 移植・二批）
+  "spotlight-reveal": load(() => import("./spotlight-reveal-demo")),
+  "fluid-cursor": load(() => import("./fluid-cursor-demo")),
+  "image-trail": load(() => import("./image-trail-demo")),
+  "beam-draw": load(() => import("./beam-draw-demo")),
+  gravity: load(() => import("./gravity-demo")),
+  "scroll-timeline": load(() => import("./scroll-timeline-demo")),
+  "world-map": load(() => import("./world-map-demo")),
 };
 
 export function DemoHost({ slug }: { slug: string }) {
