@@ -153,4 +153,98 @@ export const navigation: ComponentEntry[] = [
       license: "MIT",
     },
   },
+  {
+    slug: "magic-tab",
+    name: "魔法分頁",
+    nameEn: "Magic Tab",
+    category: "navigation",
+    description:
+      "選中的分頁會浮起成 3D 立體按鈕，下方托著一層流動的彩虹光暈與陰影；支援方向鍵移動焦點、Enter／空白鍵選取的完整鍵盤操作。",
+    dependencies: [],
+    props: [
+      {
+        name: "items",
+        type: "{ value: string; label: ReactNode; disabled?: boolean }[]",
+        description: "分頁清單",
+      },
+      { name: "value", type: "string", description: "受控模式的目前值" },
+      {
+        name: "defaultValue",
+        type: "string",
+        description: "非受控模式的初始值，不傳則選第一個可用分頁",
+      },
+      {
+        name: "onValueChange",
+        type: "(value: string) => void",
+        description: "切換分頁時的回呼",
+      },
+      {
+        name: "variant",
+        type: '"default" | "secondary"',
+        defaultValue: '"default"',
+        description: "選中分頁的配色",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        defaultValue: '"md"',
+        description: "分頁尺寸",
+      },
+      {
+        name: "rainbow",
+        type: "boolean",
+        defaultValue: "true",
+        description: "選中分頁的邊緣與陰影跑彩虹漸層動畫",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/navigation/magic-tab",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "tab-bar",
+    name: "底部分頁列",
+    nameEn: "Tab Bar",
+    category: "navigation",
+    description:
+      "手機 App 風格的膠囊底部導覽列，選中的藥丸用 layoutId 彈性滑動、圖示輕彈一下、文字只在選中時展開，支援未讀徽章與 iOS 安全區內距。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "tabs",
+        type: "{ value: string; label: string; icon: ReactNode; badge?: ReactNode }[]",
+        description: "分頁清單",
+      },
+      { name: "value", type: "string", description: "受控模式的目前值" },
+      {
+        name: "defaultValue",
+        type: "string",
+        description: "非受控模式的初始值，不傳則選第一個",
+      },
+      {
+        name: "labelsOnActiveOnly",
+        type: "boolean",
+        defaultValue: "true",
+        description: "只在選中的分頁顯示文字",
+      },
+      {
+        name: "safeArea",
+        type: "boolean",
+        defaultValue: "false",
+        description: "加上底部安全區內距（手機 home indicator）",
+      },
+      {
+        name: "onChange",
+        type: "(value: string) => void",
+        description: "切換分頁時的回呼",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/navigation/tab-bar",
+      license: "MIT",
+    },
+  },
 ];

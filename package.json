@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "cobe": "^2.0.1",
+    "dotted-map": "^3.1.0",
     "framer-motion": "^13.1.0",
+    "matter-js": "^0.20.0",
     "motion": "^13.1.0",
     "next": "16.3.0",
     "react": "19.2.8",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/matter-js": "^0.20.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

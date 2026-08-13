@@ -236,4 +236,182 @@ export const cards: ComponentEntry[] = [
       license: "MIT",
     },
   },
+  {
+    slug: "holographic-card",
+    name: "全息卡片",
+    nameEn: "Holographic Card",
+    category: "cards",
+    description:
+      "隨游標傾斜的 3D 卡片，表面帶彩虹箔光、閃粉與鏡面眩光，像實體全息收藏卡。四種箔色可選，也能改用手機陀螺儀驅動傾斜。",
+    dependencies: ["framer-motion"],
+    props: [
+      {
+        name: "variant",
+        type: '"rainbow" | "aurora" | "galaxy" | "gold"',
+        defaultValue: '"rainbow"',
+        description: "箔光配色",
+      },
+      {
+        name: "maxTilt",
+        type: "number",
+        defaultValue: "14",
+        description: "朝游標最大傾斜角度（度）",
+      },
+      {
+        name: "glare",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否顯示跟著游標的鏡面眩光",
+      },
+      {
+        name: "sparkle",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否疊上細閃粉遮罩",
+      },
+      {
+        name: "gyroscope",
+        type: "boolean",
+        defaultValue: "false",
+        description: "觸控裝置改用陀螺儀驅動傾斜（iOS 需使用者手勢授權）",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/layout/holographic-card",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "liquid-glass-card",
+    name: "液態玻璃折射卡片",
+    nameEn: "Liquid Glass Card",
+    category: "cards",
+    description:
+      "用 SVG 位移貼圖做出真實折射的玻璃面板：邊緣把背後畫面折彎並產生色散，游標移動時浮現鏡面高光。Chrome / Edge 支援即時折射，其他瀏覽器自動退回純模糊。",
+    dependencies: [],
+    props: [
+      { name: "radius", type: "number", defaultValue: "28", description: "圓角半徑（px）" },
+      { name: "blur", type: "number", defaultValue: "2", description: "背景霧化強度（px）" },
+      {
+        name: "strength",
+        type: "number",
+        defaultValue: "60",
+        description: "折射位移強度（px），越大邊緣彎越兇",
+      },
+      {
+        name: "dispersion",
+        type: "number",
+        defaultValue: "0.15",
+        description: "色散量 0–1，把 R/G/B 折射分離",
+      },
+      {
+        name: "saturation",
+        type: "number",
+        defaultValue: "1.6",
+        description: "背景飽和度倍率",
+      },
+      {
+        name: "tint",
+        type: "string",
+        defaultValue: '"rgba(255,255,255,0.08)"',
+        description: "玻璃底色，建議帶透明度",
+      },
+      { name: "sheen", type: "number", defaultValue: "0.5", description: "高光強度 0–1" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/glass/liquid-glass-card",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "liquid-glass-lens",
+    name: "液態玻璃透鏡",
+    nameEn: "Liquid Glass Lens",
+    category: "cards",
+    description:
+      "一顆跟著游標跑的圓形玻璃鏡片，把底下真實 DOM 折射放大並帶色散。父層要是 relative，鏡片本身不擋點擊，可直接疊在既有內容上。",
+    dependencies: [],
+    props: [
+      { name: "size", type: "number", defaultValue: "160", description: "鏡片直徑（px）" },
+      { name: "blur", type: "number", defaultValue: "2", description: "背景霧化強度（px）" },
+      {
+        name: "strength",
+        type: "number",
+        defaultValue: "80",
+        description: "折射位移強度（px）",
+      },
+      {
+        name: "dispersion",
+        type: "number",
+        defaultValue: "0.15",
+        description: "色散量 0–1",
+      },
+      {
+        name: "saturation",
+        type: "number",
+        defaultValue: "1.6",
+        description: "背景飽和度倍率",
+      },
+      {
+        name: "tint",
+        type: "string",
+        defaultValue: '"rgba(255,255,255,0.08)"',
+        description: "鏡片底色，建議帶透明度",
+      },
+      { name: "sheen", type: "number", defaultValue: "0.5", description: "高光強度 0–1" },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/glass/liquid-glass-lens",
+      license: "MIT",
+    },
+  },
+  {
+    slug: "encrypted-card",
+    name: "加密卡片",
+    nameEn: "Encrypted Card",
+    category: "cards",
+    description:
+      "卡片底下鋪滿不斷跳動的亂碼字流，游標經過時只在一圈柔邊視窗內顯形，像正在解密掃描。適合資安、AI 或技術類的功能卡片。",
+    dependencies: [],
+    props: [
+      {
+        name: "characters",
+        type: "string",
+        defaultValue: "英數與符號",
+        description: "亂碼字流的字元池",
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "55",
+        description: "hover 時重新亂數的間隔（毫秒）",
+      },
+      {
+        name: "revealRadius",
+        type: "number",
+        defaultValue: "130",
+        description: "跟著游標的顯形視窗半徑（px）",
+      },
+      {
+        name: "streamColor",
+        type: "string",
+        defaultValue: '"var(--primary, oklch(0.205 0 0))"',
+        description: "亂碼字流顏色",
+      },
+      {
+        name: "streamOpacity",
+        type: "number",
+        defaultValue: "1",
+        description: "顯形後的字流不透明度 0–1",
+      },
+    ],
+    source: {
+      label: "GodUI",
+      url: "https://godui.design/docs/components/effects/encrypted-card",
+      license: "MIT",
+    },
+  },
 ];

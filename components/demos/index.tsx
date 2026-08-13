@@ -133,6 +133,13 @@ export const demos: Record<string, ComponentType> = {
   "light-rays": load(() => import("./light-rays-demo")),
   "liquid-metaballs": load(() => import("./liquid-metaballs-demo")),
   "warp-starfield": load(() => import("./warp-starfield-demo")),
+  // 卡片與導覽（GodUI 移植・二批）
+  "holographic-card": load(() => import("./holographic-card-demo")),
+  "liquid-glass-card": load(() => import("./liquid-glass-card-demo")),
+  "liquid-glass-lens": load(() => import("./liquid-glass-lens-demo")),
+  "encrypted-card": load(() => import("./encrypted-card-demo")),
+  "magic-tab": load(() => import("./magic-tab-demo")),
+  "tab-bar": load(() => import("./tab-bar-demo")),
 };
 
 export function DemoHost({ slug }: { slug: string }) {

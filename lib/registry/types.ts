@@ -9,7 +9,8 @@ export type CategoryId =
   | "effects"
   | "display"
   | "canvas"
-  | "overlays";
+  | "overlays"
+  | "layout";
 
 export type Category = {
   id: CategoryId;
