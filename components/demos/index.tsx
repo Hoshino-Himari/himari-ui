@@ -140,6 +140,15 @@ export const demos: Record<string, ComponentType> = {
   "encrypted-card": load(() => import("./encrypted-card-demo")),
   "magic-tab": load(() => import("./magic-tab-demo")),
   "tab-bar": load(() => import("./tab-bar-demo")),
+  // 版面佈局（GodUI 移植・二批）
+  "three-d-marquee": load(() => import("./three-d-marquee-demo")),
+  "hero-parallax": load(() => import("./hero-parallax-demo")),
+  "container-scroll": load(() => import("./container-scroll-demo")),
+  "cover-flow": load(() => import("./cover-flow-demo")),
+  "orbit-carousel": load(() => import("./orbit-carousel-demo")),
+  "swipe-deck": load(() => import("./swipe-deck-demo")),
+  "image-accordion": load(() => import("./image-accordion-demo")),
+  "gooey-stack": load(() => import("./gooey-stack-demo")),
 };
 
 export function DemoHost({ slug }: { slug: string }) {

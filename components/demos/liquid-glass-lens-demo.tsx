@@ -4,7 +4,7 @@ import { LiquidGlassLens } from "@/components/ui/liquid-glass-lens";
 
 export default function LiquidGlassLensDemo() {
   return (
-    <div className="relative h-80 overflow-hidden rounded-2xl bg-gradient-to-br from-sky-500 via-emerald-400 to-amber-300 p-8">
+    <div className="relative h-80 w-full overflow-hidden rounded-2xl bg-gradient-to-br from-sky-500 via-emerald-400 to-amber-300 p-8">
       <h3 className="text-2xl font-bold text-white drop-shadow">
         把游標移進這塊區域
       </h3>
