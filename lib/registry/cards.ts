@@ -331,7 +331,7 @@ export const cards: ComponentEntry[] = [
     nameEn: "Liquid Glass Lens",
     category: "cards",
     description:
-      "一顆跟著游標跑的圓形玻璃鏡片，把底下真實 DOM 折射放大並帶色散。父層要是 relative，鏡片本身不擋點擊，可直接疊在既有內容上。",
+      "一顆跟著游標跑的圓形玻璃鏡片，把底下真實 DOM 折射扭曲並在邊緣拉出色散——是玻璃質感而非清晰放大鏡，背景細節越多越明顯，想溫和一點就調小 strength。父層要是 relative，鏡片本身不擋點擊。",
     dependencies: [],
     props: [
       { name: "size", type: "number", defaultValue: "160", description: "鏡片直徑（px）" },

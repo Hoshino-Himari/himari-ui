@@ -4,26 +4,24 @@ import { LiquidGlassLens } from "@/components/ui/liquid-glass-lens";
 
 export default function LiquidGlassLensDemo() {
   return (
-    <div className="relative h-80 w-full overflow-hidden rounded-2xl bg-gradient-to-br from-sky-500 via-emerald-400 to-amber-300 p-8">
-      <h3 className="text-2xl font-bold text-white drop-shadow">
-        把游標移進這塊區域
-      </h3>
-      <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/90">
-        一顆圓形玻璃鏡片會跟著游標跑，把下方的文字與色塊即時折射放大。
-        鏡片不會擋住點擊，可以直接疊在既有內容上。
-      </p>
-      <div className="mt-6 grid grid-cols-4 gap-3">
-        {["折", "射", "色", "散", "液", "態", "玻", "璃"].map((word) => (
-          <div
-            key={word}
-            className="flex h-14 items-center justify-center rounded-xl bg-white/25 text-xl font-bold text-white"
-          >
-            {word}
-          </div>
-        ))}
+    <div
+      className="relative h-96 w-full overflow-hidden rounded-2xl bg-cover bg-center"
+      style={{ backgroundImage: "url(/demos/rainforest.webp)" }}
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 p-6">
+        <h3 className="text-2xl font-bold text-white drop-shadow-lg">
+          把游標移進這塊區域
+        </h3>
+        <p className="mt-1 max-w-sm text-sm leading-relaxed text-white/90 drop-shadow">
+          圓形鏡片會跟著游標跑，把底下的畫面折射扭曲並帶出彩色邊緣，
+          細節越多的背景越看得出玻璃感。鏡片不會擋住點擊。
+        </p>
+        <p className="mt-2 text-xs text-white/70 drop-shadow">
+          這裡把 strength 調成 30（預設 80）讓景物還看得清楚；數字越大扭曲越誇張、越接近液態玻璃。
+        </p>
       </div>
 
-      <LiquidGlassLens size={150} />
+      <LiquidGlassLens size={170} strength={30} />
     </div>
   );
 }

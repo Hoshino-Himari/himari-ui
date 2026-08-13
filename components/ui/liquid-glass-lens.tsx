@@ -6,7 +6,8 @@
 import * as React from "react";
 
 /**
- * 液態玻璃透鏡：一顆跟著游標跑的圓形玻璃鏡片，把底下的真實畫面折射放大並帶色散。
+ * 液態玻璃透鏡：一顆跟著游標跑的圓形玻璃鏡片，把底下的真實畫面折射扭曲並在邊緣拉出色散。
+ * 這是玻璃質感而不是清晰的放大鏡，背景細節越多越明顯（想要溫和一點就調小 strength）。
  * 父層必須是 `relative`；鏡片本身 `pointer-events-none`，不會擋住點擊。
  * @example
  * <div className="relative h-72 w-full">
