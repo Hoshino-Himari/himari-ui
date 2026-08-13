@@ -43,16 +43,20 @@ export function Sidebar({ categories, entries }: Props) {
   const pathname = usePathname();
   const [query, setQuery] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
+  // 只記錄使用者手動點過的分類；沒點過的分類一律吃預設值（收合）
+  const [openOverrides, setOpenOverrides] = useState<Record<string, boolean>>({});
   const reducedMotion = useReducedMotion();
 
-  function toggleCategory(id: string) {
-    setCollapsed((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
+  // 目前正在看的元件所屬分類預設展開，這樣進元件頁還看得到自己在目錄的哪裡
+  const activeCategory = useMemo(() => {
+    const prefix = "/components/";
+    if (!pathname?.startsWith(prefix)) return null;
+    const slug = pathname.slice(prefix.length);
+    return entries.find((e) => e.slug === slug)?.category ?? null;
+  }, [entries, pathname]);
+
+  function toggleCategory(id: string, isOpen: boolean) {
+    setOpenOverrides((prev) => ({ ...prev, [id]: !isOpen }));
   }
 
   const filtered = useMemo(() => {
@@ -82,12 +86,14 @@ export function Sidebar({ categories, entries }: Props) {
         const items = filtered.filter((e) => e.category === cat.id);
         if (items.length === 0) return null;
         // 搜尋時一律展開，避免結果被收合狀態藏住
-        const isOpen = query.trim() !== "" || !collapsed.has(cat.id);
+        const isOpen =
+          query.trim() !== "" ||
+          (openOverrides[cat.id] ?? cat.id === activeCategory);
         return (
           <div key={cat.id}>
             <button
               type="button"
-              onClick={() => toggleCategory(cat.id)}
+              onClick={() => toggleCategory(cat.id, isOpen)}
               aria-expanded={isOpen}
               className="mb-1 flex w-full items-center gap-1.5 rounded-md px-2 py-1 font-display text-xs font-bold uppercase tracking-widest text-ink-faint transition-colors duration-(--dur-fast) hover:bg-paper-3 hover:text-ink-mute"
             >
