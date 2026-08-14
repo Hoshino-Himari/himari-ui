@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { Category, ComponentEntry } from "@/lib/registry/types";
+import { searchEntries } from "@/lib/search";
 
 const listVariants = {
   open: {
@@ -59,29 +60,52 @@ export function Sidebar({ categories, entries }: Props) {
     setOpenOverrides((prev) => ({ ...prev, [id]: !isOpen }));
   }
 
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return entries;
-    return entries.filter(
-      (e) =>
-        e.name.toLowerCase().includes(q) ||
-        e.nameEn.toLowerCase().includes(q) ||
-        e.slug.includes(q)
-    );
-  }, [entries, query]);
+  const filtered = useMemo(
+    () => searchEntries(entries, query),
+    [entries, query]
+  );
+
+  const overviewActive = pathname === "/components";
 
   const nav = (
     <nav aria-label="元件目錄" className="flex flex-col gap-6">
-      <label className="relative block">
-        <span className="sr-only">搜尋元件</span>
-        <input
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="搜尋元件…"
-          className="w-full rounded-lg border border-line bg-paper-2 px-3 py-2 text-sm text-ink placeholder:text-ink-faint transition-colors duration-(--dur-fast) focus:border-line-strong focus:outline-2 focus:outline-offset-0 focus:outline-focus"
-        />
-      </label>
+      <div className="flex flex-col gap-2">
+        <Link
+          href="/components"
+          onClick={() => setMobileOpen(false)}
+          aria-current={overviewActive ? "page" : undefined}
+          className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium transition-colors duration-(--dur-fast) ${
+            overviewActive
+              ? "bg-accent-soft text-accent"
+              : "text-ink-mute hover:bg-paper-3 hover:text-ink"
+          }`}
+        >
+          <svg
+            viewBox="0 0 16 16"
+            aria-hidden
+            className="size-3.5 shrink-0 fill-none stroke-current stroke-[1.5]"
+          >
+            <rect x="2" y="2" width="5" height="5" rx="1" />
+            <rect x="9" y="2" width="5" height="5" rx="1" />
+            <rect x="2" y="9" width="5" height="5" rx="1" />
+            <rect x="9" y="9" width="5" height="5" rx="1" />
+          </svg>
+          元件總覽
+          <span className="ml-auto font-mono text-[10px] text-ink-faint/70">
+            {entries.length}
+          </span>
+        </Link>
+        <label className="relative block">
+          <span className="sr-only">搜尋元件</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="搜尋元件…"
+            className="w-full rounded-lg border border-line bg-paper-2 px-3 py-2 text-sm text-ink placeholder:text-ink-faint transition-colors duration-(--dur-fast) focus:border-line-strong focus:outline-2 focus:outline-offset-0 focus:outline-focus"
+          />
+        </label>
+      </div>
       {categories.map((cat) => {
         const items = filtered.filter((e) => e.category === cat.id);
         if (items.length === 0) return null;

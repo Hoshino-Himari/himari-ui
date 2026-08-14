@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SearchTrigger } from "./search-trigger";
 
 const GITHUB_URL = "https://github.com/Hoshino-Himari/himari-ui";
 
@@ -15,6 +16,9 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className="ml-auto flex items-center gap-1 text-sm">
+          <div className="mr-1">
+            <SearchTrigger />
+          </div>
           <Link
             href="/components"
             className="rounded-md px-3 py-1.5 text-ink-mute transition-colors duration-(--dur-fast) hover:bg-paper-3 hover:text-ink"

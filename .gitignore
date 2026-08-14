@@ -44,5 +44,8 @@ next-env.d.ts
 lib/registry-code.json
 .hallmark/
 
+# OG 字型子集化用的來源檔（12MB，用 scripts/build-og-font.py 自動下載）
+/.cache/
+
 .vercel
 .env*

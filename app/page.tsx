@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { categories, registry, entriesByCategory } from "@/lib/registry";
+import { shadcnAddCommand } from "@/lib/site";
+import { CopyButton } from "@/components/site/copy-button";
 
 export default function HomePage() {
   return (
@@ -108,6 +110,59 @@ export default function HomePage() {
             </li>
           ))}
         </ol>
+      </section>
+
+      {/* 給 AI 與 CLI 的入口 */}
+      <section className="border-t border-line py-16">
+        <h2 className="mb-3 font-display text-2xl font-bold tracking-tight text-ink">
+          給 CLI 與 AI 用
+        </h2>
+        <p className="mb-8 max-w-2xl text-sm leading-relaxed text-ink-mute">
+          整個元件庫也以機器可讀的形式開放。用 shadcn CLI 一行裝進專案，或把
+          <code className="mx-1 rounded bg-paper-3 px-1.5 py-0.5 font-mono text-xs text-ink">
+            llms.txt
+          </code>
+          丟給 Codex、Claude、Cursor，它就知道有哪些元件、怎麼裝、原始碼在哪。
+        </p>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {[
+            {
+              href: "/llms.txt",
+              title: "llms.txt",
+              body: "全部元件的說明、相依與原始碼網址，一份純文字讀完。",
+            },
+            {
+              href: "/r/registry.json",
+              title: "registry.json",
+              body: "shadcn 格式的全站索引，可直接接進自己的工具鏈。",
+            },
+            {
+              href: "/r/globe.tsx",
+              title: "/r/<slug>.tsx",
+              body: "任一元件的純文字原始碼，curl 得到什麼就是專案裡跑的什麼。",
+            },
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group rounded-xl border border-line bg-paper-2 p-5 transition-all duration-(--dur-base) ease-(--ease-out) hover:-translate-y-0.5 hover:border-line-strong hover:bg-paper-3"
+            >
+              <h3 className="font-mono text-sm text-accent">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-mute">
+                {item.body}
+              </p>
+            </a>
+          ))}
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-2 rounded-xl border border-line bg-paper-2 px-4 py-3">
+          <span className="shrink-0 text-sm text-ink-mute">一行安裝：</span>
+          <code className="min-w-0 flex-1 overflow-x-auto font-mono text-xs text-ink">
+            {shadcnAddCommand("globe")}
+          </code>
+          <CopyButton text={shadcnAddCommand("globe")} label="複製指令" />
+        </div>
       </section>
 
       <footer className="border-t border-line py-10 text-sm text-ink-faint">

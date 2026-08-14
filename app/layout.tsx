@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Noto_Sans_TC, JetBrains_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/site/site-header";
+import { CommandPalette } from "@/components/site/command-palette";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TAGLINE,
+  SITE_URL,
+} from "@/lib/site";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -20,12 +27,25 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Himari UI — 繁體中文 UI 元件庫",
-    template: "%s — Himari UI",
+    default: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    template: `%s — ${SITE_NAME}`,
   },
-  description:
-    "分門別類、複製即用的 React + Tailwind 動效元件庫。每個元件都是完整自足的單一檔案，貼進任何專案就能跑。",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    locale: "zh_TW",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -37,6 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <SiteHeader />
         {children}
+        <CommandPalette />
       </body>
     </html>
   );

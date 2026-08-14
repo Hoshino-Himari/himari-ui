@@ -47,6 +47,8 @@ export type ComponentEntry = {
   description: string;
   /** react / react-dom 以外需要 npm install 的套件 */
   dependencies: string[];
+  /** 額外搜尋關鍵字。多數元件靠 lib/search.ts 的同義詞表就夠了，這裡只補特例 */
+  tags?: string[];
   props?: PropDoc[];
   /** 改寫自哪個開源專案（會顯示出處連結） */
   source?: SourceRef;

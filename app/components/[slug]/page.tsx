@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCategory, getEntry, registry } from "@/lib/registry";
 import registryCode from "@/lib/registry-code.json";
+import { buildAiPrompt } from "@/lib/ai-prompt";
+import { SITE_NAME, SITE_URL, shadcnAddCommand } from "@/lib/site";
 import { DemoHost } from "@/components/demos";
 import { CodeBlock } from "@/components/site/code-block";
 import { CopyButton } from "@/components/site/copy-button";
@@ -19,7 +21,26 @@ export async function generateMetadata({
   const { slug } = await params;
   const entry = getEntry(slug);
   if (!entry) return {};
-  return { title: entry.name, description: entry.description };
+  const url = `${SITE_URL}/components/${entry.slug}`;
+  // 沒有明寫 openGraph 的話會整份沿用 root layout 的，og:title 會停在站名
+  return {
+    title: entry.name,
+    description: entry.description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      locale: "zh_TW",
+      siteName: SITE_NAME,
+      title: `${entry.name}（${entry.nameEn}）`,
+      description: entry.description,
+      url,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${entry.name}（${entry.nameEn}）`,
+      description: entry.description,
+    },
+  };
 }
 
 export default async function ComponentPage({
@@ -36,15 +57,20 @@ export default async function ComponentPage({
       ? `npm install ${entry.dependencies.join(" ")}`
       : null;
   const filename = `components/ui/${entry.slug}.tsx`;
+  const shadcnCmd = shadcnAddCommand(entry.slug);
+  const aiPrompt = buildAiPrompt(entry, code);
 
   return (
     <main className="max-w-4xl">
       <p className="text-sm text-ink-faint">
         {category.name} / <span className="font-mono">{entry.nameEn}</span>
       </p>
-      <h1 className="mt-1 font-display text-3xl font-bold tracking-tight text-ink">
-        {entry.name}
-      </h1>
+      <div className="mt-1 flex flex-wrap items-start justify-between gap-3">
+        <h1 className="font-display text-3xl font-bold tracking-tight text-ink">
+          {entry.name}
+        </h1>
+        <CopyButton text={aiPrompt} label="複製給 AI" />
+      </div>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-mute">
         {entry.description}
       </p>
@@ -89,6 +115,27 @@ export default async function ComponentPage({
 
       <section className="mt-10">
         <h2 className="font-display text-lg font-bold text-ink">安裝</h2>
+
+        <h3 className="mt-4 text-sm font-medium text-ink">
+          方式一：一行指令（shadcn CLI）
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-ink-mute">
+          相依套件與檔案落點都會自動處理，存成{" "}
+          <code className="rounded bg-paper-3 px-1.5 py-0.5 font-mono text-xs text-ink">
+            {filename}
+          </code>
+          。
+        </p>
+        <div className="mt-3 flex flex-wrap items-center gap-2 rounded-md border border-line bg-paper-2 px-3 py-2">
+          <code className="min-w-0 flex-1 overflow-x-auto font-mono text-xs text-ink">
+            {shadcnCmd}
+          </code>
+          <CopyButton text={shadcnCmd} label="複製指令" />
+        </div>
+
+        <h3 className="mt-6 text-sm font-medium text-ink">
+          方式二：手動複製
+        </h3>
         <ol className="mt-3 flex flex-col gap-3 text-sm text-ink-mute">
           {installCmd && (
             <li className="flex flex-wrap items-center gap-3">
@@ -104,7 +151,16 @@ export default async function ComponentPage({
             <code className="rounded bg-paper-3 px-1.5 py-0.5 font-mono text-xs text-ink">
               {filename}
             </code>
-            ，直接 import 使用。
+            ，直接 import 使用。也可以直接抓{" "}
+            <a
+              href={`${SITE_URL}/r/${entry.slug}.tsx`}
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono text-xs text-accent underline underline-offset-2 hover:text-accent-strong"
+            >
+              /r/{entry.slug}.tsx
+            </a>
+            （純文字原始碼）。
           </li>
         </ol>
       </section>
